@@ -4,28 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/estilos.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Login</title>
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center">Planilla de Tareas - Eléctrica</h1>
-        <form class="mt-5 w-5">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Usuario</label>
-                <input type="text" class="form-control" placeholder="Usuario">
-                <small id="emailHelp" class="form-text text-muted">Favor introduzca un usuario válido</small>
+        <div class="row">
+    
+            <div class="col-lg-12 col-md-12">
+                <h1 class="text-center">Planilla de Tareas - Eléctrica</h1>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Usuario</label>
+                            <input type="text" class="form-control w-50" placeholder="Usuario">
+                            <small id="emailHelp" class="form-text text-muted">Favor introduzca un usuario válido</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control w-50" placeholder="Password">
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Recuérdame</label>
+                        </div>
+                            <button type="submit" class="btn btn-primary">Ingresar</button>
+                    </form>
+                
             </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" placeholder="Password">
-            </div>
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Recuérdame</label>
-            </div>
-                <button type="submit" class="btn btn-primary">Ingresar</button>
-        </form>
+        </div>
     </div>
     
 
