@@ -1,5 +1,9 @@
-.cont {
-    margin: auto;
-    padding: auto;
+.cont form{
+    margin-left: 30%;
+}
 
+@media(max-width: 768px) {
+    .cont form div input {
+        width: 100%;
+    }
 }

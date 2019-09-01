@@ -9,24 +9,19 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
     
-            <div class="col-lg-12 col-md-12">
+            <div class="col-lg-12 col-md-12 cont">
                 <h1 class="text-center">Planilla de Tareas - Eléctrica</h1>
-                    <form>
+                    <form method="post" action="./validaciones/validar_usuario.php">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Usuario</label>
+                            <label>Usuario</label>
                             <input type="text" class="form-control w-50" placeholder="Usuario">
-                            <small id="emailHelp" class="form-text text-muted">Favor introduzca un usuario válido</small>
                         </div>
                         <div class="form-group">
                             <label>Password</label>
                             <input type="password" class="form-control w-50" placeholder="Password">
-                        </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Recuérdame</label>
                         </div>
                             <button type="submit" class="btn btn-primary">Ingresar</button>
                     </form>
