@@ -17,11 +17,11 @@
                     <form method="post" action="./validaciones/validar_usuario.php">
                         <div class="form-group">
                             <label>Usuario</label>
-                            <input type="text" class="form-control w-50" placeholder="Usuario">
+                            <input type="text" class="form-control w-50" name="usuario" placeholder="Usuario">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control w-50" placeholder="Password">
+                            <input type="password" class="form-control w-50" name="pass" placeholder="Password">
                         </div>
                             <button type="submit" class="btn btn-primary">Ingresar</button>
                     </form>
