@@ -8,6 +8,7 @@
     $usuario = $_POST['usuario'];
     $pass = $_POST['pass'];
 
+    mysqli_set_charset($con,'utf8');
     $sql = "SELECT * from usuarios where usuario= '$usuario' and pass='$pass'";
 
     $resultado = mysqli_query($con, $sql);
@@ -25,7 +26,6 @@
         //echo "<script>Contraseña o usuario incorrecto</script>";
         //header('Location: ../index.php');
 
-        echo "No se puede conectar";
     }
     
 
