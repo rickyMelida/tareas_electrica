@@ -8,7 +8,7 @@
     $usuario = $_POST['usuario'];
     $pass = $_POST['pass'];
 
-    $sql = "SELECT * from usuarios_electrica where usuario= '$usuario' and pass='$pass'";
+    $sql = "SELECT * from usuarios where usuario= '$usuario' and pass='$pass'";
 
     $resultado = mysqli_query($con, $sql);
 
