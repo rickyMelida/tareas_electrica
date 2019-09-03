@@ -2,6 +2,13 @@
     margin-left: 30%;
 }
 
+.menu img{
+    margin: 5%;
+}
+
+.menu img:hover {
+    cursor: pointer;
+}
 @media(max-width: 768px) {
     .cont form div input {
         width: 100%;
