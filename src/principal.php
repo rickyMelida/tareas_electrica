@@ -9,14 +9,18 @@
     <title>Rutinas electricas</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container border border-primary">
 
-        <h1 class="text-center">Menu Principal</h1>
+        <h1 class="text-center bg-primary">Menu Principal</h1>
         <div class="row menu">
-            <img src="../iconos/anotar.png" onclick="agregar()" width="200" height="200">
-            <img src="../iconos/tareas.png" onclick="pendientes()" alt="" width="200" height="200">
-            <!--button>Tareas Pendientes</button>
-            <button>Reportes de horas</button-->
+            <div class="col-lg-6 col-md-6">
+                <img src="../iconos/anotar.png" onclick="agregar()" width="200" height="200"><br>
+                <span>Agregar Tareas</span>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <img src="../iconos/tareas.png" onclick="pendientes()" alt="" width="200" height="200"><br>
+                <span>Ver Pendientes</span>
+            </div>
         </div>
     </div>
 
