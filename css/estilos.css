@@ -2,11 +2,19 @@
     margin-left: 30%;
 }
 
-.menu img{
-    margin: 5%;
+.menu div img, span{
+    margin: 5% 5% 5% 20%;
 }
 
-.menu img:hover {
+.menu div{
+    padding: 5%;
+}
+
+.menu div span {
+    text-align: center;
+    font-weight: bold;
+}
+.menu div img:hover {
     cursor: pointer;
 }
 @media(max-width: 768px) {
