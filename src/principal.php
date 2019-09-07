@@ -1,3 +1,7 @@
+<?php
+    require_once ("../validaciones/autorizacion.php");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,8 +14,10 @@
 </head>
 <body>
     <div class="container border border-primary">
-
-        <h1 class="text-center bg-primary">Menu Principal</h1>
+        <header class="text-center bg-primary p-4">
+            <h1 class=" d-inline">Menu Principal</h1>
+            <a href="../validaciones/cerrar_sesion.php"><img src="../iconos/perfil.png" class="float-right m-3" title="<?php echo $var_session;?>"></a>
+        </header>
         <div class="row menu">
             <div class="col-lg-6 col-md-6">
                 <img src="../iconos/anotar.png" onclick="agregar()" width="200" height="200"><br>

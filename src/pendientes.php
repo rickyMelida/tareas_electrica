@@ -1,3 +1,7 @@
+<?php
+    require_once ("../validaciones/autorizacion.php");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
