@@ -15,13 +15,13 @@
     <div class="container">
         <h1 class="text-center">Agrega Tareas</h1>
 
-        <form action="" method="post" class="border border-dark p-3 bg-primary">
+        <form action="../validaciones/formulario.php" method="post" name="formulario" class="border border-dark p-3 bg-primary">
         <div class="row">
                 <div class="col-lg-4 col-md-12 py-3">
                     <h2>Tipos de Trabajo</h2>
                     <div class="form-check m-3">
                         <input type="radio" class="form-check-input" name="t_trabajo" id="rutinas" value="rutinas" >
-                        <label class="form-check-label" for="rutina">Rutinas</label>
+                        <label class="form-check-label" for="rutinas">Rutinas</label>
                     </div>
 
                     <div class="form-check m-3">
@@ -75,7 +75,7 @@
                             <div class="row">
                                 <div class="col-lg-12 p-3">
                                     <div class="form-check">
-                                        <input type="radio" name="pendiente" id="pendiente" value="pendiente">
+                                        <input type="radio" name="estado" id="pendiente" value="pendiente">
                                         <label class="form-check-label" for="pendiente">Pendiente</label>
                                     </div>
                                 </div>
@@ -83,7 +83,7 @@
                             <div class="row">
                                 <div class="col-lg-12 p-3">
                                         <div class="form-check">
-                                            <input type="radio" name="pendiente" id="finalizado" value="finalizado">
+                                            <input type="radio" name="estado" id="finalizado" value="finalizado">
                                             <label class="form-check-label" for="finalizado">Finalizado</label>
                                         </div>                                     
                                 </div>
@@ -155,6 +155,7 @@
         </form>
     </div>
 
+    <script src="../js/design.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
