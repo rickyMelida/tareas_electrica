@@ -1,7 +1,7 @@
 function agregar() {
-    window.open('agregar.html', '_self');
+    window.open('agregar.php', '_self');
 }
 
 function pendientes() {
-    window.open('pendientes.html', '_self');
+    window.open('pendientes.php', '_self');
 }
