@@ -22,9 +22,10 @@
     if($filas > 0) {
         $_SESSION['usuario'] = $usuario;
         header('Location: ../src/principal.php');
+
     }else {
-        //echo "<script>Contraseña o usuario incorrecto</script>";
-        //header('Location: ../index.php');
+        echo "<script> alert('Contraseña o usuario incorrecto');</script>";
+        header('Location: ../index.php');
 
     }
     
