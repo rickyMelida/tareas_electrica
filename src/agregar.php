@@ -15,7 +15,7 @@
     <div class="container">
         <h1 class="text-center">Agrega Tareas</h1>
 
-        <form action="" method="post" class="border border-dark p-3 bg-success">
+        <form action="" method="post" class="border border-dark p-3 bg-primary">
         <div class="row">
                 <div class="col-lg-4 col-md-12 py-3">
                     <h2>Tipos de Trabajo</h2>
@@ -151,7 +151,7 @@
                     </div>
                 </div>
             </div>    
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-dark">Guardar</button>
         </form>
     </div>
 
