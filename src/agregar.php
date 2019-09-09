@@ -152,7 +152,14 @@
                     </div>
                 </div>
             </div>    
-            <button type="submit" class="btn btn-dark">Guardar</button>
+            <div class='row'>
+                <div class="col-lg-6 col-md-6">
+                    <button type="submit" class="btn btn-dark m-4 px-3">Guardar</button>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <a href="./principal.php" class="btn btn-dark m-4  px-3 float-right">Volver..</a>
+                </div>
+            </div>
         </form>
     </div>
 
