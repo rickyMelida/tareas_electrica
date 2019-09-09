@@ -20,7 +20,7 @@
                 <div class="col-lg-4 col-md-12 py-3">
                     <h2>Tipos de Trabajo</h2>
                     <div class="form-check m-3">
-                        <input type="radio" class="form-check-input" name="t_trabajo" id="rutinas" value="rutinas" >
+                        <input type="radio" class="form-check-input" name="t_trabajo" id="rutinas" value="rutinas" checked>
                         <label class="form-check-label" for="rutinas">Rutinas</label>
                     </div>
 
@@ -75,7 +75,7 @@
                             <div class="row">
                                 <div class="col-lg-12 p-3">
                                     <div class="form-check">
-                                        <input type="radio" name="estado" id="pendiente" value="pendiente">
+                                        <input type="radio" name="estado" id="pendiente" value="pendiente" checked>
                                         <label class="form-check-label" for="pendiente">Pendiente</label>
                                     </div>
                                 </div>
