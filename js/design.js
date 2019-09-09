@@ -6,17 +6,29 @@ function pendientes() {
     window.open('pendientes.php', '_self');
 }
 
-function estado_trabajo() {
-    for(var i=0; document.formulario.estado.length; i++) {
-        if(document.formulario.estado[i].checked) 
-            break;
+var tecnicos = document.getElementsByClassName('tecnicos');
+var horas = document.getElementsByClassName('horas');
+var n_tecnicos = document.getElementsByClassName('n_tecnicos');
+var horas = document.getElementsByClassName('horas');
+
+window.addEventListener('load', deshabilitar_t);
+
+function habilitar_t() {
+    for (var i = 0; i < tecnicos.length; i++) {
+        tecnicos[i].disabled = false;
+        horas[i].disabled = false;
+        horas[i].placeholder = 'hh:mm';
+        n_tecnicos[i].getElementsByClassName.color = 'black';
+    }
+}
+
+
+function deshabilitar_t() {
+    for (var i = 0; i < tecnicos.length; i++) {
+        tecnicos[i].disabled = true;
+        horas[i].disabled = true;
+        tecnicos[i].checked = 0;        
+        n_tecnicos[i].getElementsByClassName.color = 'gray';
     }
 
-    var estado = document.formulario.estado[i].value;
-
-    if(estado = "pendiente") {
-        document.getElementById('tecnico_1').disabled=true;
-    }else if(estado == "finalizado"){
-        document.getElementById('tecnico_1').disabled=false;
-    }
 }
