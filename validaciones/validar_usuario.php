@@ -2,12 +2,12 @@
     require_once "conexionBD.php";
     session_start();
 
+    $obj = new conectar();
+    $con = $obj->conexion();
+
     if (!$con) {
         header('Location: ../src/errorDB.php');
     }else {
-
-        $obj = new conectar();
-        $con = $obj->conexion();
 
         $usuario = $_POST['usuario'];
         $pass = $_POST['pass'];
@@ -26,9 +26,9 @@
             header('Location: ../src/principal.php');
 
         }else {
-            echo "<script> alert('Contraseña o usuario incorrecto');</script>";
-            header('Location: ../index.php');
-
+            echo "<script> alert('Contraseña o usuario incorrecto');
+                window.location='../index.php';
+            </script>";
         }
     }
 

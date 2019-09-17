@@ -1,5 +1,25 @@
 <?php
-    require_once ("../validaciones/autorizacion.php");
+    require_once "../validaciones/autorizacion.php";
+    require_once "../procesos/tecnicos.php";
+
+    switch ($var_session) {
+        case 'turnoMañana':
+            $turno = "Manhana";
+            break;
+        case 'turnoTarde' :
+            $turno = "Tarde";
+            break;
+        case 'turnoNoche' :
+            $turno = "Noche";
+            break;
+        default:
+            echo "<script>alert('Usuario No valido');
+                window.location = '../src/agregar.php';
+            </script>";   
+            break;
+    }
+
+    $tecnicos = tecns($turno);
 ?>
 
 <!DOCTYPE html>
@@ -95,9 +115,9 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <select class="form-control" name="turno" >
-                                            <option value="">Mañana</option>
-                                            <option value="">Tarde</option>
-                                            <option value="">Noche</option>
+                                            <option>Mañana</option>
+                                            <option>Tarde</option>
+                                            <option>Noche</option>
                                         </select>
                                     </div>
                                 </div>
@@ -109,15 +129,15 @@
                             <h2>Tecnicos</h2>
                                 <div class="form-check my-4">
                                     <input type="checkbox" name="tecnico_1" id="tecnico_1" class="tecnicos" value="c_barreto">
-                                    <label class="form-check-label n_tecnicos" for="tecnico_1">Camilo Barreto</label>
+                                    <label class="form-check-label n_tecnicos" for="tecnico_1"><?php echo $tecnicos[0]; ?></label>
                                 </div>
                                 <div class="form-check my-4">
                                     <input type="checkbox" name="tecnico_2" id="tecnico_2" class="tecnicos" value="r_melida">
-                                    <label class="form-check-label n_tecnicos" for="tecnico_2">Ricardo Melida</label>
+                                    <label class="form-check-label n_tecnicos" for="tecnico_2"> <?php echo $tecnicos[1];?> </label>
                                 </div>
                                 <div class="form-check my-4">
                                     <input type="checkbox" name="tecnico_3" id="tecnico_3" class="tecnicos" value="l_romero">
-                                    <label class="form-check-label n_tecnicos" for="tecnico_3">Lazaro Romero</label>
+                                    <label class="form-check-label n_tecnicos" for="tecnico_3"><?php echo $tecnicos[2];?> </label>
                                 </div>                                     
                         </div>
                     </div>
