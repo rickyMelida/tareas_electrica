@@ -73,6 +73,8 @@
         echo "<hr><br>No se pudo agregar los datos";
 
     }*/
+    echo "Se inicio a las " . $hora_inicial."<br>";
+    echo "Termino a las " . $hora_final."<br>";
 
-    echo "<br>Texto de prueba";
+    echo "<br>Texto de prueba y la hora es ".$horas_hombre;
 ?>
