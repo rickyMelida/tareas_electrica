@@ -18,5 +18,9 @@
 
         return $tecs;
     }
+
+    function cargo($turno) {
+        
+    }
     
 ?>

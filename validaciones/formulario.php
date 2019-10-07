@@ -8,12 +8,10 @@
     $tipo_tr = $_POST['t_trabajo'];
     $estado_tr = $_POST['estado'];
 
-    $tecnico_1 = $_POST['tecnico_1'];
-    $tecnico_2 = $_POST['tecnico_2'];
-    $tecnico_3 = $_POST['tecnico_3'];
 
     $turno = $_POST['turno'];
 
+    //Cambiar el nombre del turno por manhana
     if($turno == "Mañana") {
         $turno = "Manhana";
     }
@@ -21,19 +19,68 @@
     $hora_inicial = $_POST['h_inicial'];
     $hora_final = $_POST['h_final'];
 
-    $horas_hombre = $_POST['h_hombre'];
+    $horas_hombre = $_POST['res_hh'];
 
     $descripcion = $_POST['descripcion'];
+
+    $tecnicos = isset($_POST['tecnico']) ? $_POST['tecnico'] : null; 
+    $cargo = 
 
     //Guardamos la fecha que extraemos del sistema
     $fecha = date("d")."-".date("m")."-".date("Y");
 
-    
+    if($estado_tr == "pendiente" && empty($descripcion)) {
+        echo "<script>alert('Faltan completar el pendiente'); window.open('../src/agregar.php','_self');</script>";
+        
+    }
+
+    if( $estado_tr == "finalizado" && $hora_inicial=="" && $hora_final=="" && empty($descripcion) ) {
+        echo "<script>alert('Faltan completar el pendiente'); window.open('../src/agregar.php','_self');</script>";        
+    }
+
+
+    $arrayTecnicos = null;
+
+    $num_array = count($tecnicos);
+    $contador = 0;
+
+    if($num_array > 0) {
+        foreach($tecnicos as $key => $value) {
+            if($contador != $num_array-1) {
+                $arrayTecnicos .= $value. ' ';
+            }else {
+                $arrayTecnicos .= $value;
+                $contador ++;
+            }
+        }
+    }
+
+    $obj = new metodos();
+
+    $datos = array($tipo_tr, $descripcion, $fecha, $hora_inicial, $hora_final, $horas_hombre, $estado_tr, $turno, $arrayTecnicos, $cargo);
+    if($obj->agregar($datos) == 1) {
+        echo "<script>alert('Se agrego a la BD'); window.open('../src/agregar.php','_self');</script>";        
+    }
+
+    echo "El tipo de trabajo es ".$tipo_tr. "<br>";
+
+    echo "Descripcion : ".$descripcion."<br>";
+
+    echo "En la fecha ". $fecha. "<br>";
 
     echo "Se inicio a las " . $hora_inicial."<br>";
+
     echo "Termino a las " . $hora_final."<br>";
 
-    echo "<br>Texto de prueba y la hora es ".$horas_hombre."<br>";
+    echo "<br>Horas hombre: ".$horas_hombre."<br>";
 
-    echo "En la fecha ". $fecha;
+    echo "Estado: ". $estado_tr ."<br>";
+
+    echo "Turno: ".$turno."<br>";
+
+    
+    echo "Los tecnicos son ".$arrayTecnicos."<br>";
+
+    echo "Cargo: ";    
+
 ?>

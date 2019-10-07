@@ -127,21 +127,22 @@
                         <div class="col-lg-6 p-3">
                             <h2>Tecnicos</h2>
                                 <div class="form-check my-4">
-                                    <input type="checkbox" name="tecnico_1" id="tecnico_1" class="tecnicos" value="c_barreto">
+                                    <input type="checkbox" name="tecnico[]" id="tecnico_1" class="tecnicos" value="<?php echo $tecnicos[0];?>">
+                                    <input type="hidden" name="cargo[]" value="">
                                     <label class="form-check-label n_tecnicos" for="tecnico_1"><?php echo $tecnicos[0]; ?></label>
                                 </div>
                                 <div class="form-check my-4">
-                                    <input type="checkbox" name="tecnico_2" id="tecnico_2" class="tecnicos" value="r_melida">
+                                    <input type="checkbox" name="tecnico[]" id="tecnico_2" class="tecnicos" value="<?php echo $tecnicos[1];?>">
                                     <label class="form-check-label n_tecnicos" for="tecnico_2"> <?php echo $tecnicos[1];?> </label>
                                 </div>
                                 <div class="form-check my-4">
-                                    <input type="checkbox" name="tecnico_3" id="tecnico_3" class="tecnicos" value="l_romero">
+                                    <input type="checkbox" name="tecnico[]" id="tecnico_3" class="tecnicos" value="<?php echo $tecnicos[2];?>">
                                     <label class="form-check-label n_tecnicos" for="tecnico_3"><?php echo $tecnicos[2];?> </label>
                                 </div>                                     
                         </div>
                     </div>
     
-                    <!--------------------------------------------------->
+                    <!-----------------------Horarios---------------------------->
                     <div class="row">
                         <div class="col-lg-12 p-3">
                             <h2>Horas trabajadas</h2>
@@ -156,6 +157,7 @@
                             <div class="form-group disabled">
                                 <label for="h_hombre">Horas hombre</label>
                                 <input type="text" name="h_hombre" class="hora" id="h_hombre" disabled>
+                                <input type="hidden" name="res_hh" id="res_hh">
                             </div>
                         </div>
                     </div>
@@ -167,13 +169,13 @@
                 <div class="col-lg-12 p-5">
                     <div class="form-group">
                         <h3>Descripcion del trabajo</h3>
-                        <textarea class="form-control" name="descripcion" rows="3"></textarea>
+                        <textarea class="form-control" name="descripcion" id="txt_tarea" rows="3"></textarea>
                     </div>
                 </div>
             </div>    
             <div class='row'>
                 <div class="col-lg-6 col-md-6">
-                    <button type="submit" class="btn btn-dark m-4 px-3">Guardar</button>
+                    <button type="submit" iid="enviar" class="btn btn-dark m-4 px-3">Guardar</button>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <a href="./principal.php" class="btn btn-dark m-4  px-3 float-right">Volver..</a>
