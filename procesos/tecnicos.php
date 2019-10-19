@@ -6,6 +6,10 @@
     function tecns($turno) {
         $ver = new metodos();
         
+        $obj = new conectar();
+        $con = $obj->conexion();
+
+        mysqli_set_charset($con,'utf8');
         $tecnicos = "SELECT * from tecnicos where turno = '$turno'";
         $tecnicosBD = $ver->mostrar($tecnicos);
 

@@ -3,10 +3,10 @@
         private $servidor = "localhost";
         private $database = "tareas_electrica";
         private $username = "root";
-        private $password = "5181789781Ri-";
+        private $password = "";
 
         public function conexion() {
-            $conexion = mysqli_connect($this->servername, $this->username, $this->password, $this->database);
+            $conexion = mysqli_connect($this->servidor, $this->username, $this->password, $this->database);
 
             return $conexion;
         }
