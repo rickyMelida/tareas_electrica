@@ -47,12 +47,12 @@
             if(validar(hora_i) == false || validar(hora_f) == false){
                 if(validar(hora_i) == false){
                     alert('Formato de hora inicial no valido!');
-                    document.getElementById('h_inicial').select();
+                    //document.getElementById('h_inicial').select();
                 }
 
                 if(validar(hora_f) == false){
                     alert('Formato de hora final no valido!');
-                    document.getElementById('h_final').select();
+                    //document.getElementById('h_final').select();
                 }
             }else{
                 document.getElementById('h_hombre').value = hora_h + ":" + min_h;
@@ -80,7 +80,6 @@ var n_tecnicos = document.getElementsByClassName('n_tecnicos');
 var horas = document.getElementsByClassName('horas');
 
 window.addEventListener('load', deshabilitar_t);
-//document.getElementById('h_final').addEventListener('blur', validar);
 
 
 //-------------Funcion para habilitar los tecnicos
