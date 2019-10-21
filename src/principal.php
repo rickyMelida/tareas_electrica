@@ -15,6 +15,7 @@
 <body>
     <div class="container border border-primary">
         <header class="text-center bg-primary p-4">
+            <a href="../validaciones/cerrar_sesion.php"><img src="../iconos/config.png" class="float-left m-3" ></a>            
             <h1 class=" d-inline">Menu Principal</h1>
             <a href="../validaciones/cerrar_sesion.php"><img src="../iconos/perfil.png" class="float-right m-3" title="<?php echo $var_session;?>"></a>
         </header>
