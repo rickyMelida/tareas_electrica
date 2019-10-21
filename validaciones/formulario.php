@@ -63,8 +63,11 @@
 
             $datos = array($tipo_tr, $estado_tr, $descripcion, $fecha, $hora_inicial, $hora_final, $horas_hombre, $turno, $arrayTecnicos, $res_cargo);
             if($obj->agregar($datos) == 1) {
-                //echo "<script>alert('Se agrego a la BD'); window.open('../src/agregar.php','_self');</script>";        
-                echo "Los tecnicos son ".$arrayTecnicos;
+                echo "<script>alert('Se agrego a la BD'); window.open('../src/agregar.php','_self');</script>";        
+                //echo "Los tecnicos son ".$arrayTecnicos;
+            }else {
+                echo "<script>alert('Error al agregar a la BD'); //window.open('../src/agregar.php','_self');</script>";        
+
             }
         
             
