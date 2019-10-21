@@ -25,7 +25,7 @@
 <body>
     <div class="container-fluid">
         <h1 class="text-center m-3">Tareas</h1>
-        <table class="table table-striped">
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th scope="col">Nro.</th>
@@ -42,7 +42,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <!--tr>
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>Otto</td>
@@ -54,19 +54,19 @@
                     <td>@mdo</td>
                     <td>@mdo</td>
                     <td>@mdo</td>                
-                </tr>
+                </tr-->
 
                 <?php
                     foreach($ver as $key){
                         echo "<tr>";
                             echo "<td scope='row'>".$key['id_tarea']."</td>";
                             echo "<td>".$key['t_tarea']."</td>";
-                            echo "<td>".$key['estado']."</td>";
                             echo "<td>".$key['des_tarea']."</td>";
                             echo "<td>".$key['fecha']."</td>";
                             echo "<td>".$key['hora_i']."</td>";
                             echo "<td>".$key['hora_f']."</td>";
                             echo "<td>".$key['horas_h']."</td>";
+                            echo "<td>".$key['estado']."</td>";
                             echo "<td>".$key['turno']."</td>";
                             echo "<td>".$key['tecnicos']."</td>";
                             echo "<td>".$key['cargo']."</td>";
