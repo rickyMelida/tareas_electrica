@@ -12,7 +12,7 @@
     $descripcion = $_POST['descripcion'];
     
     //Guardamos la fecha que extraemos del sistema
-    $fecha = date("d")."-".date("m")."-".date("Y");
+    $fecha = date("Y")."-".date("m")."-".date("d");
 
     //Cambiar el nombre del turno por manhana
     if($turno == "Mañana") {
@@ -36,9 +36,11 @@
         }else {
     
             $arrayTecnicos = null;
-        
-            $num_array = count($tecnicos);
+            $tec_sele = tecns($turno);            
+
             $contador = 0;
+
+            $num_array = count($tecnicos);
         
             if($num_array > 0) {
                 foreach($tecnicos as $key => $value) {
@@ -50,32 +52,22 @@
                     }
                 }
             }
-        
-            $datos = array($tipo_tr, $estado_tr, $descripcion, $fecha, $hora_inicial, $hora_final, $horas_hombre, $turno, $arrayTecnicos, $cargo);
+            
+            $selec = "SELECT cargo_t from tecnicos where turno='$turno' and nombre='$arrayTecnicos'";
+
+            $cargo = $obj->mostrar($selec);
+
+            foreach($cargo as $key) {
+                $res_cargo = $key['cargo_t'];         
+            }
+
+            $datos = array($tipo_tr, $estado_tr, $descripcion, $fecha, $hora_inicial, $hora_final, $horas_hombre, $turno, $arrayTecnicos, $res_cargo);
             if($obj->agregar($datos) == 1) {
-                echo "<script>alert('Se agrego a la BD'); window.open('../src/agregar.php','_self');</script>";        
+                //echo "<script>alert('Se agrego a la BD'); window.open('../src/agregar.php','_self');</script>";        
+                echo "Los tecnicos son ".$arrayTecnicos;
             }
         
-            /*echo "El tipo de trabajo es ".$tipo_tr. "<br>";
-        
-            echo "Descripcion : ".$descripcion."<br>";
-        
-            echo "En la fecha ". $fecha. "<br>";
-        
-            echo "Se inicio a las " . $hora_inicial."<br>";
-        
-            echo "Termino a las " . $hora_final."<br>";
-        
-            echo "<br>Horas hombre: ".$horas_hombre."<br>";
-        
-            echo "Estado: ". $estado_tr ."<br>";
-        
-            echo "Turno: ".$turno."<br>";
-        
             
-            echo "Los tecnicos son ".$arrayTecnicos."<br>";
-        
-            echo "Cargo: ";   */ 
 
         }
 
