@@ -37,8 +37,10 @@ alter table tecnicos add cargo_t varchar(50)
 
 update tecnicos set turno = "Manhana" where id_tecnico=5
 
+SELECT cargo_t from tecnicos where turno = 'Tarde' and nombre= 'Ricardo Melida'
+
 select * from tecnicos
-SELECT * from tecnicos where turno = 'Tarde'
+
 create table tareas (
 	id_tarea int auto_increment,
     t_tarea varchar(200) not null,
