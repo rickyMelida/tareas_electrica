@@ -1,5 +1,16 @@
 <?php
     require_once ("../validaciones/autorizacion.php");
+    require_once ("../validaciones/conexionBD.php");
+    require_once ("../validaciones/metodos_crud.php");
+
+    $obj = new conectar();
+    $con = $obj->conexion();
+
+    mysqli_set_charset($con,'utf8');
+    $sql = "SELECT * from tareas";
+
+    $muestra = new metodos();
+    $ver = $muestra->mostrar($sql);
 ?>
 
 <!DOCTYPE html>
@@ -44,6 +55,25 @@
                     <td>@mdo</td>
                     <td>@mdo</td>                
                 </tr>
+
+                <?php
+                    foreach($ver as $key){
+                        echo "<tr>";
+                            echo "<td scope='row'>".$key['id_tarea']."</td>";
+                            echo "<td>".$key['t_tarea']."</td>";
+                            echo "<td>".$key['estado']."</td>";
+                            echo "<td>".$key['des_tarea']."</td>";
+                            echo "<td>".$key['fecha']."</td>";
+                            echo "<td>".$key['hora_i']."</td>";
+                            echo "<td>".$key['hora_f']."</td>";
+                            echo "<td>".$key['horas_h']."</td>";
+                            echo "<td>".$key['turno']."</td>";
+                            echo "<td>".$key['tecnicos']."</td>";
+                            echo "<td>".$key['cargo']."</td>";
+                        echo "</tr>";
+
+                    }
+                ?>
             </tbody>
         </table>
     </div>
