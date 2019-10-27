@@ -22,10 +22,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Pendientes</title>
 </head>
-<body>
+<body class="bg-dark">
     <div class="container-fluid">
+    <a href="principal.php" class="float-left m-3 btn btn-light">Volver</a>
         <h1 class="text-center m-3">Tareas</h1>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-dark">
             <thead>
                 <tr>
                     <th scope="col">Nro.</th>
@@ -42,20 +43,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!--tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>                
-                </tr-->
-
                 <?php
                     foreach($ver as $key){
                         echo "<tr>";
