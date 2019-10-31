@@ -70,8 +70,9 @@ insert into usuarios(usuario, pass, tecns)
 			  ('turnoTarde', '1975', '2'),
 			  ('turnoNoche', 'LuisC', '3');
 
-select * from tareas
+select * from usuarios
 
+insert into usuarios(usuario, pass, tecns) value("admin", "electrica1234", 6)
 
 select * from usuarios where usuario='turnoMañana' and pass='homero'
 
