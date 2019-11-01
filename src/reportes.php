@@ -1,3 +1,32 @@
+<?php
+    require_once ("../validaciones/autorizacion.php");
+    require_once "../validaciones/conexionBD.php";
+
+    $usuario = $_POST['usuario'];
+    $pass = $_POST['password'];
+
+    $obj = new conectar();
+    $con = $obj->conexion();
+
+    mysqli_set_charset($con,'utf8');
+    $sql = "SELECT * from usuarios where usuario= 'admin' and pass='$pass'";
+
+    $resultado = mysqli_query($con, $sql);
+
+    $filas = mysqli_num_rows($resultado);
+
+    
+
+    if($filas > 0) {
+        echo "<script>alert('Bienvenido Admin!!')</script>";
+    }else {
+        echo "<script> alert('Contraseña o usuario de administrador incorrecto');
+            window.location='./principal.php';
+        </script>";
+    }
+
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,18 +38,22 @@
     <title>Reportes</title>
 </head>
 <body>
-    <div class="container">
-        <div class="row mt-5 menu">
-            <div class="col-lg-6 col-md-12">
-                <h1>Reporte de horarios</h1>
-                <a href="#"> <img src="../iconos/reporte.png" width="200" height="200"> </a>
-            </div>
-            <div class="col-lg-6 col-md-12">
-                <h1>Horario tecnicos</h1>
-                <a href="#"> <img src="../iconos/electricista.png" width="200" height="200"> </a>
-
-            </div>
+    <div class="container border border-primary">
+    <header class="text-center bg-primary p-4">   
+            <a href="principal.php" class="float-left m-3 btn btn-outline-light">Volver</a>
+            <h1 class=" d-inline">Reportes</h1>
+    </header>
+    <div class="row mt-5 menu">
+        <div class="col-lg-6 col-md-12">
+            <h1>Reporte de horarios</h1>
+            <a href="#"> <img src="../iconos/reporte.png" width="200" height="200"> </a>
         </div>
+        <div class="col-lg-6 col-md-12">
+            <h1>Horario tecnicos</h1>
+            <a href="#"> <img src="../iconos/electricista.png" width="200" height="200"> </a>
+
+        </div>
+    </div>
     </div>
     <script src="../js/design.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

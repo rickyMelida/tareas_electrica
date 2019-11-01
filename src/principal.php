@@ -15,7 +15,7 @@
 <body>
     <div class="container border border-primary">
         <header class="text-center bg-primary p-4">
-            <a href="reportes.php"><img src="../iconos/config.png" class="float-left m-3" title="Reporte de horarios" ></a>            
+            <a href="#" data-toggle="modal" data-target="#acceso"><img src="../iconos/config.png" class="float-left m-3" title="Reporte de horarios" ></a>                    
             <h1 class=" d-inline">Menu Principal</h1>
             <a href="../validaciones/cerrar_sesion.php"><img src="../iconos/perfil.png" class="float-right m-3" title="<?php echo $var_session;?>"></a>
         </header>
@@ -30,6 +30,36 @@
             </div>
         </div>
     </div>
+
+
+    <!--Modal para ingresar como administrador-->
+    <div class="modal fade " id="acceso">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Iniciar sesion de administrador</h5>
+                </div>
+                <div class="modal-body">
+                    <form action="./reportes.php" method="post">
+                        <div class="form-group">
+                            <label for="usuario">usuario</label>
+                            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <input type="submit" class="btn btn-primary" value="Acceder">
+                    </form>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <!------------------------->
+
 
     <script src="../js/design.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

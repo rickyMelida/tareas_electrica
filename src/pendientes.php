@@ -22,11 +22,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Pendientes</title>
 </head>
-<body class="bg-dark">
-    <div class="container-fluid">
-    <a href="principal.php" class="float-left m-3 btn btn-light">Volver</a>
+<body class="bg-light">
+    <div class="container border border-primary">
+    <header class="text-center bg-primary p-4">   
+        <a href="principal.php" class="float-left m-3 btn btn-outline-dark">Volver</a>
+        <h1 class=" d-inline">Reportes</h1>
+    </header>
         <h1 class="text-center m-3">Tareas</h1>
-        <table class="table table-bordered table-dark">
+        <table class="table table-bordered table-primary">
             <thead>
                 <tr>
                     <th scope="col">Nro.</th>

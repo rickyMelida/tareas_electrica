@@ -32,9 +32,12 @@
     <title>Agregar</title>
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center">Agrega Tareas</h1>
+    <div class="container border border-primary">
+    <header class="text-center bg-primary p-4">   
+            <a href="./principal.php" class="btn btn-dark m-3  px-3 float-left">Volver..</a>
 
+            <h1 class=" d-inline">Agrega Tareas</h1>
+    </header>
         <form action="../validaciones/formulario.php" method="post" name="formulario" class="border border-dark p-3 bg-primary">
         <div class="row">
                 <div class="col-lg-4 col-md-12 py-3">
