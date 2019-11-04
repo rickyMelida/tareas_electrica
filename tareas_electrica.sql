@@ -32,7 +32,7 @@ insert into tecnicos(nombre, cargo_t, turno)
                     ("Lazaro Romero", "Junior", "Noche" );
 
 update tecnicos 
-
+select * from tecnicos
 alter table tecnicos add cargo_t varchar(50)
 
 update tecnicos set turno = "Manhana" where id_tecnico=5

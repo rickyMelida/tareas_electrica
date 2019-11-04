@@ -26,9 +26,8 @@
     <div class="container border border-primary">
     <header class="text-center bg-primary p-4">   
         <a href="principal.php" class="float-left m-3 btn btn-outline-dark">Volver</a>
-        <h1 class=" d-inline">Reportes</h1>
+        <h1 class=" d-inline">Tareas</h1>
     </header>
-        <h1 class="text-center m-3">Tareas</h1>
         <table class="table table-bordered table-primary">
             <thead>
                 <tr>

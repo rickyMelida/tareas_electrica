@@ -5,6 +5,11 @@
     $usuario = $_POST['usuario'];
     $pass = $_POST['password'];
 
+    if(isset($_COOKIE['admin']) && isset($_COOKIE['admin_pass'])) {
+        $usuario = $_COOKIE['admin'];
+        $pass = $_COOKIE['admin_pass'];
+    }
+
     $obj = new conectar();
     $con = $obj->conexion();
 
@@ -19,6 +24,9 @@
 
     if($filas > 0) {
         echo "<script>alert('Bienvenido Admin!!')</script>";
+        setcookie('admin', $usuario, time() + 900);
+        setcookie('admin_pass', $pass, time() + 900);
+
     }else {
         echo "<script> alert('Contraseña o usuario de administrador incorrecto');
             window.location='./principal.php';
@@ -40,7 +48,7 @@
 <body>
     <div class="container border border-primary">
     <header class="text-center bg-primary p-4">   
-            <a href="principal.php" class="float-left m-3 btn btn-outline-light">Volver</a>
+            <a href="principal.php" class="float-left m-3 btn btn-outline-light">Salir</a>
             <h1 class=" d-inline">Reportes</h1>
     </header>
     <div class="row mt-5 menu">
@@ -50,7 +58,7 @@
         </div>
         <div class="col-lg-6 col-md-12">
             <h1>Horario tecnicos</h1>
-            <a href="#"> <img src="../iconos/electricista.png" width="200" height="200"> </a>
+            <a href="horario_tecnicos.php"> <img src="../iconos/electricista.png" width="200" height="200"> </a>
 
         </div>
     </div>
