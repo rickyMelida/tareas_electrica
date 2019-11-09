@@ -22,6 +22,15 @@
 
             return $result = mysqli_query($con, $sql);
         }
+
+        public function eliminar($id) {
+            $obj = new conectar();
+            $con = $obj ->conexion();
+
+            $sql = "DELETE from tecnicos where id_tecnico = '$id'";
+
+            return mysqli_query($con, $sql);
+        }
     }
 
 ?>
