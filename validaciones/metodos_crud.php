@@ -31,6 +31,15 @@
 
             return mysqli_query($con, $sql);
         }
+
+        public function actualizar($datos) {
+            $obj = new conectar();
+            $con = $obj ->conexion();
+
+            $sql = "UPDATE tecnicos set nombre='$datos[0]', cargo_t='$datos[1]', turno='$datos[2]' where id_tecnico='$datos[3]'";
+
+            return $result = mysqli_query($con, $sql);
+        }
     }
 
 ?>

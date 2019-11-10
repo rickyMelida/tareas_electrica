@@ -1,5 +1,5 @@
 <?php
-
+    require_once "../validaciones/autorizacion.php";
 ?>
 
 <!DOCTYPE html>
@@ -16,11 +16,24 @@
     <div class="container border border-primary">
         <header class="text-center bg-primary p-4">   
             <a href="reportes.php" class="float-left m-3 btn btn-outline-dark">Volver</a>
-            <h1 class=" d-inline">Tecnicos</h1>
+            <h1 class=" d-inline">Reportes de Horas</h1>
         </header>
         <div class="row">
             <div class="col-md-8 m-auto p-3">
-                
+            <table class="table table-bordered table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">Mes</th>
+                        <th scope="col" class="text-center">Año</th>
+                        <th scope="col" class="text-center">Total de horas por mes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> <?php echo ;?> </td>
+                    </tr>
+                </tbody>
+            </table>
             </div>
         </div>
     </div>

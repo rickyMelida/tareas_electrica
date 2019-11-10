@@ -9,6 +9,8 @@ create table tecnicos (
     primary key(id_tecnico)
 )
 
+select cargo_t from tecnicos where id_tecnico=1
+
 create table usuarios (
 	id_usuario int(5) auto_increment,
     usuario varchar(50) not null,

@@ -4,7 +4,10 @@
 
     switch ($var_session) {
         case 'turnoMañana':
-            $turno = "Manhana";
+            $turno = "Mañana";
+            break;
+        case "Admin":
+            $turno = "Tarde";
             break;
         case 'turnoTarde' :
             $turno = "Tarde";
