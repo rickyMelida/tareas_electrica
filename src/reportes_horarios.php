@@ -70,7 +70,7 @@
                         <td class="text-center"><b> <?php setlocale(LC_TIME, "spanish"); echo ucfirst(strftime("%Y"));?> </b></td>
                         <td class="text-center"><b> <?php foreach($datos as $key) { echo $key['horas'];} ?> </b></td>
                         <td class="text-center"><b> <?php echo $objetivo." Hs"; ?> </b></td>
-                        <td class="text-center"><b> <?php echo $interval->format('%H horas %i minutos %s seconds'); ?> </b></td>
+                        <td class="text-center"><b> <?php echo $interval->format('%H:%i:%S '); ?> </b></td>
                     </tr>
                 </tbody>
             </table>
