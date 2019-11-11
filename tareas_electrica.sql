@@ -77,6 +77,9 @@ insert into usuarios(usuario, pass, tecns)
 
 SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas
 
+SELECT tecnicos, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where tecnicos="Ricardo Melida"
+DATE_SUB(NOW(), INTERVAL 1 HOUR)
+
 insert into usuarios(usuario, pass, tecns) value("admin", "electrica1234", 6)
 
 select * from usuarios where usuario='turnoMañana' and pass='homero'
