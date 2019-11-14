@@ -8,6 +8,7 @@ create table tecnicos (
 	turno varchar(50) not null,
     primary key(id_tecnico)
 )
+select * from tecnicos
 
 create table usuarios (
 	id_usuario int(5) auto_increment,
@@ -19,6 +20,7 @@ create table usuarios (
     foreign key (tecns) references tecnicos(id_tecnico)
 );
 
+drop table usuarios
 show databases
 
 insert into tecnicos(nombre, cargo_t, turno) 
