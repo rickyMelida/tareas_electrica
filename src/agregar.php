@@ -4,7 +4,10 @@
 
     switch ($var_session) {
         case 'turnoMañana':
-            $turno = "Manhana";
+            $turno = "Mañana";
+            break;
+        case "Admin":
+            $turno = "Tarde";
             break;
         case 'turnoTarde' :
             $turno = "Tarde";
@@ -34,14 +37,15 @@
 </head>
 <body>
     <div class="container border border-primary">
-        <header class="text-center bg-primary p-4">   
+        <!--header class="text-center bg-primary p-4">   
                 <a href="./principal.php" class="btn btn-dark m-3  px-3 float-left">Volver..</a>
 
-                <h1 class=" d-inline">Agrega Tareas</h1>
-        </header>
-        <form action="../validaciones/formulario.php" method="post" name="formulario" class="border border-dark p-3 bg-primary">
+                <h1 class=" d-inline">Agregar Tareas</h1>
+        </header-->
+        <form action="../validaciones/formulario.php" method="post" name="formulario" class="border border-dark p-3 bg-info">
         <div class="row">
-            <div class="col-lg-4 col-md-12 py-3">
+            <!---------------Tipos de trabajo--------------------->
+            <div class="col-lg-4 col-md-12">
                 <h2>Tipos de Trabajo</h2>
                 <div class="form-check m-3">
                     <input type="radio" class="form-check-input" name="t_trabajo" id="rutinas" value="rutinas" checked>
@@ -128,7 +132,7 @@
                     </div>
 
                     <!-------------Tecnicos-------------------------------------->            
-                    <div class="col-lg-6 p-3">
+                    <div class="col-lg-6 px-3">
                         <h2>Tecnicos</h2>
                             <div class="form-check my-4">
                                 <input type="checkbox" name="tecnico[]" id="tecnico_1" class="tecnicos" value="<?php echo $tecnicos[0];?>">
@@ -148,7 +152,7 @@
 
                 <!-----------------------Horarios---------------------------->
                 <div class="row">
-                    <div class="col-lg-12 p-3">
+                    <div class="col-lg-12 px-3">
                         <h2>Horas trabajadas</h2>
                         <div class="form-group">
                             <label for="h_inicial">Hora Inicial</label>
@@ -169,10 +173,10 @@
         </div>
         <!-------------Descripcion del trabajo-------------------------------------->
         <div class="row">
-                <div class="col-lg-12 p-5">
+                <div class="col-lg-12 py-2 px-5">
                     <div class="form-group">
                         <h3>Descripcion del trabajo</h3>
-                        <textarea class="form-control" name="descripcion" id="txt_tarea" rows="3"></textarea>
+                        <textarea class="form-control" name="descripcion" id="txt_tarea" rows="2"></textarea>
                     </div>
                 </div>
             </div>    

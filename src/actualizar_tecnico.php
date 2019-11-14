@@ -1,3 +1,22 @@
+<?php
+    require_once "../validaciones/autorizacion.php";
+    require_once "../validaciones/conexionBD.php";
+    require_once "../validaciones/metodos_crud.php";
+
+    $id = $_GET['id'];
+    $obj  = new metodos();
+
+    $nombre = "SELECT nombre from tecnicos where id_tecnico = $id";
+    $cargo = "SELECT cargo_t from tecnicos where id_tecnico = $id";
+    $turno = "SELECT turno from tecnicos where id_tecnico = $id";
+
+
+    $nombre_res = $obj->mostrar($nombre);
+    $cargo_res = $obj->mostrar($cargo);
+    $turno_res = $obj->mostrar($turno);
+
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,24 +34,25 @@
             <h1 class=" d-inline">Actualizar</h1>
         </header>
         <div class="row">
-            <form action="" method="" class="col-md-8 m-auto p-3">
+            <form action="../procesos/actualizar.php" method="post" class="col-md-8 m-auto p-3">
                 <div class="form-group">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" >
+                    <input type='text' class='form-control' id='nombre' name="nombre" value = "<?php foreach($nombre_res as $key){ echo $key['nombre']; }?>" >
                 </div>
                 <div class="form-group">
                     <label for="cargo">Cargo</label>
                     <select name="cargo" id="cargo" class="form-control">
-                        <option value="junior">Junior</option>
-                        <option value="senior">Senior</option>
+                        <option value= "<?php foreach($cargo_res as $key){ if ($key['cargo_t'] == 'Junior'){ echo 'Junior';}else{echo 'Senior';} }?>" > <?php foreach($cargo_res as $key){ if ($key['cargo_t'] == "Junior"){ echo "Junior";}else{echo "Senior";} }?> </option>
+                        <option value= "<?php foreach($cargo_res as $key){ if ($key['cargo_t'] == 'Junior'){ echo 'Senior';}else{echo 'Junior';} }?>" ><?php foreach($cargo_res as $key){ if ($key['cargo_t'] == "Junior"){ echo "Senior";}else{echo "Junior";} }?></option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="turno">Turno</label>
-                    <select name="cargo" id="cargo" class="form-control">
-                        <option value="mañana">Mañana</option>
-                        <option value="tarde">Tarde</option>
-                        <option value="noche">Noche</option>
+                    <select name="turno" id="turno" class="form-control">
+                        <option value= "<?php foreach($turno_res as $key){ if ($key['turno'] == 'Manhana'){ echo 'Mañana';}else if($key['turno'] == 'Tarde'){echo 'Tarde';}else { echo "Noche";} }?>" > <?php foreach($turno_res as $key){ if ($key['turno'] == 'Manhana'){ echo 'Mañana';}else if($key['turno'] == 'Tarde'){echo 'Tarde';}else { echo "Noche";} }?> </option>
+                        <option value="<?php foreach($turno_res as $key){ if ($key['turno'] == 'Manhana'){ echo 'Tarde';}else if($key['turno'] == 'Tarde'){echo 'Noche';}else { echo "Mañana";} }?>"> <?php foreach($turno_res as $key){ if ($key['turno'] == 'Manhana'){ echo 'Tarde';}else if($key['turno'] == 'Tarde'){echo 'Noche';}else { echo "Mañana";} }?> </option>
+                        <option value="<?php foreach($turno_res as $key){ if ($key['turno'] == 'Manhana'){ echo 'Noche';}else if($key['turno'] == 'Tarde'){echo 'Mañana';}else { echo "Tarde";} }?>"> <?php foreach($turno_res as $key){ if ($key['turno'] == 'Manhana'){ echo 'Noche';}else if($key['turno'] == 'Tarde'){echo 'Mañana';}else { echo "Tarde";} }?> </option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Actualizar</button>

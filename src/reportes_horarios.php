@@ -1,4 +1,35 @@
 <?php
+    require_once "../validaciones/autorizacion.php";
+    require_once "../validaciones/conexionBD.php";
+    require_once "../validaciones/metodos_crud.php";
+
+    //Objetivo de las horas hombre
+    $objetivo = "14:00:00";
+
+    $obj = new metodos();
+
+    ///Extraemos el total de las horas hombre
+    $sql = "SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas";
+
+    $datos = $obj->mostrar($sql);
+
+
+    ////Extraemos a los datos de los tecnicos
+    $sql_tec = "SELECT tecnicos, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas";
+    $datos_tec = $obj->mostrar($sql_tec);
+
+    ////Extraemos a los datos de los sectores
+    $sql_tipo = "SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas";
+    $datos_tipo = $obj->mostrar($sql_tipo);
+
+    ////Diferencia entre el objetivo y las horas hombre actual
+    foreach($datos as $key) { $hora1 = $key['horas'];}
+
+    $horaInicio = new DateTime($hora1);
+    $horaTermino = new DateTime($objetivo);
+
+    $interval = $horaInicio->diff($horaTermino);
+    //echo $interval->format('%H horas %i minutos %s seconds');
 
 ?>
 
@@ -16,11 +47,76 @@
     <div class="container border border-primary">
         <header class="text-center bg-primary p-4">   
             <a href="reportes.php" class="float-left m-3 btn btn-outline-dark">Volver</a>
-            <h1 class=" d-inline">Tecnicos</h1>
+            <a href="reportes.php" class="float-right m-3 btn btn-outline-dark">Historial</a>
+            <h1 class=" d-inline">Reportes de Horas</h1>
         </header>
         <div class="row">
-            <div class="col-md-8 m-auto p-3">
-                
+            <div class="col-md-10 m-auto p-3">
+
+            <!-----------------Reporte General----------------------------->
+            <table class="table table-bordered table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">Mes</th>
+                        <th scope="col" class="text-center">Año</th>
+                        <th scope="col" class="text-center">Horas Hombre Actual</th>
+                        <th scope="col" class="text-center">Horas Hombre Objetivo</th>
+                        <th scope="col" class="text-center">Diferencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center"><b> <?php setlocale(LC_TIME, "spanish"); echo ucfirst(strftime("%B"));?> </b></td>
+                        <td class="text-center"><b> <?php setlocale(LC_TIME, "spanish"); echo ucfirst(strftime("%Y"));?> </b></td>
+                        <td class="text-center"><b> <?php foreach($datos as $key) { echo $key['horas'];} ?> </b></td>
+                        <td class="text-center"><b> <?php echo $objetivo." Hs"; ?> </b></td>
+                        <td class="text-center"><b> <?php echo $interval->format('%H:%i:%S '); ?> </b></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-12 m-auto p-3">
+
+            <!-----------------Reporte por tecnico----------------------------->
+                <table class="table table-bordered table-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-center">Técnicos</th>
+                            <th scope="col" class="text-center">Total de horas por mes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($datos_tec as $key){ ?>
+                            <tr>
+                                <td class="text-center"><b> <?php echo $key['tecnicos'];?> </b></td>
+                                <td class="text-center"><b> <?php echo $key['horas'];?> </b></td>
+                            </tr>
+                            <?php }?>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-sm-12 m-auto p-3">
+            <!-----------------Reporte por sector----------------------------->
+                <table class="table table-bordered table-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-center">Tipo de Trabajo</th>
+                            <th scope="col" class="text-center">Total de horas por mes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($datos_tipo as $key){ ?>
+                            <tr>
+                                <td class="text-center"><b> <?php echo $key['t_tarea'];?> </b></td>
+                                <td class="text-center"><b> <?php echo $key['horas_h'];?> </b></td>
+                            </tr>
+                            <?php }?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

@@ -47,16 +47,19 @@
                     <tbody>
                         <?php
                             foreach($ver as $key) {
-                                echo "<tr>";
-                                    echo "<td scope='row'>".$key['id_tecnico']."</td>";
-                                    echo "<td>".$key['nombre']."</td>";
-                                    echo "<td>".$key['cargo_t']."</td>";
-                                    echo "<td>".$key['turno']."</td>";         
-                                    echo "<td><a href='actualizar_tecnico.php'>Editar<a/></td>";  
-                                    echo "<td><a href='#'>Eliminar</a></td>";
-                                echo "</tr>";
+                        ?>        
+                                <tr>
+                                    <td scope='row'><?php echo $key['id_tecnico'];?></td>
+                                    <td><?php echo $key['nombre']; ?></td>
+                                    <td><?php echo $key['cargo_t']; ?></td>
+                                    <td><?php echo $key['turno']; ?></td>         
+                                    <td><a href="actualizar_tecnico.php?id=<?php echo $key['id_tecnico']?>">Editar</a></td>  
+                                    <td><a href="../procesos/eliminar.php?id=<?php echo $key['id_tecnico']?>">Eliminar</a></td>
+                                </tr>
+                        <?php
                             }
                         ?>
+                        
                     </tbody>
                 </table>
             </div>

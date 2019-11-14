@@ -10,6 +10,10 @@ create table tecnicos (
 )
 select * from tecnicos
 
+select * from tecnicos where turno = "Mañana"
+
+
+
 create table usuarios (
 	id_usuario int(5) auto_increment,
     usuario varchar(50) not null,
@@ -64,6 +68,7 @@ create table tareas (
 insert into tareas(t_tarea, estado, des_tarea, fecha, hora_i, hora_f, horas_h, turno, tecnicos, cargo)
 values("rutinas", "Finalizado", "Rutinas de trafos y generadores","1992-02-12", "13:00", "15:30", "2:00",  "tarde", "Ricardo Mélida", "Junior");
 
+select tecnicos, horas_h from tareas where horas_h != "00:00:00"
 insert into tareas(t_tarea, estado, des_tarea,fecha,  turno)
 values("rutinas", "pendiente", "tareas","2019-10-20" , "tarde");
 
@@ -72,7 +77,10 @@ insert into usuarios(usuario, pass, tecns)
 			  ('turnoTarde', '1975', '2'),
 			  ('turnoNoche', 'LuisC', '3');
 
-select * from usuarios
+SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas
+
+SELECT tecnicos, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where tecnicos="Ricardo Melida"
+DATE_SUB(NOW(), INTERVAL 1 HOUR)
 
 insert into usuarios(usuario, pass, tecns) value("admin", "electrica1234", 6)
 

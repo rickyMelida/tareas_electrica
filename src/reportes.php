@@ -55,7 +55,7 @@
     <div class="row mt-5 menu">
         <div class="col-lg-6 col-md-12">
             <h1>Reporte de horarios</h1>
-            <a href="#"> <img src="../iconos/reporte.png" width="200" height="200"> </a>
+            <a href="reportes_horarios.php"> <img src="../iconos/reporte.png" width="200" height="200"> </a>
         </div>
         <div class="col-lg-6 col-md-12">
             <h1>Horario tecnicos</h1>
