@@ -65,6 +65,7 @@ create table tareas (
     primary key(id_tarea)
 );
 
+select * from tareas
 insert into tareas(t_tarea, estado, des_tarea, fecha, hora_i, hora_f, horas_h, turno, tecnicos, cargo)
 values("rutinas", "Finalizado", "Rutinas de trafos y generadores","1992-02-12", "13:00", "15:30", "2:00",  "tarde", "Ricardo Mélida", "Junior");
 
@@ -77,9 +78,10 @@ insert into usuarios(usuario, pass, tecns)
 			  ('turnoTarde', '1975', '2'),
 			  ('turnoNoche', 'LuisC', '3');
 
-SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas
+SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) as horas FROM tareas where t_tarea = "asistencia"
 
-SELECT tecnicos, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where tecnicos="Ricardo Melida"
+SELECT tecnicos, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where estado="Finalizado"
+
 DATE_SUB(NOW(), INTERVAL 1 HOUR)
 
 insert into usuarios(usuario, pass, tecns) value("admin", "electrica1234", 6)
