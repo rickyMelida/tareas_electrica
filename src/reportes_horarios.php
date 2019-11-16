@@ -8,6 +8,10 @@
 
     $obj = new metodos();
 
+    //Vemos la cantidad de tecnicos que tenemos
+    $can_tecnicos = "SELECT * from tecnicos";
+    
+
     ///Extraemos el total de las horas hombre
     $sql = "SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas";
 

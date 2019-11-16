@@ -82,6 +82,9 @@ SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) as horas FROM tareas where t_tarea
 
 SELECT tecnicos, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where estado="Finalizado"
 
+SELECT * FROM tecnicos
+select tecnicos, horas_h from tareas where estado="Finalizado"
+
 DATE_SUB(NOW(), INTERVAL 1 HOUR)
 
 insert into usuarios(usuario, pass, tecns) value("admin", "electrica1234", 6)
