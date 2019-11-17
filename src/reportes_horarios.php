@@ -8,15 +8,29 @@
 
     $obj = new metodos();
 
+    //Seleccion de todos los tecnicos
+    $nombres_tec = array();
+
+    $c = new conectar();
+    $con = $c->conexion();
+    $nom = "SELECT nombre from tecnicos";
+    $result = mysqli_query($con, $nom);
+    $r = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    foreach($r as $key) {
+        array_push($nombres_tec, $key['nombre']);
+    }
+
+    //Seleccion de tareas
+    
+
+
+    //echo "<script>alert('El nombre del tecnicos es ".$nombres_tec[0]."');</script>";
+    
+
     ///Extraemos el total de las horas hombre
     $sql = "SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas";
-
     $datos = $obj->mostrar($sql);
-
-
-    ////Extraemos a los datos de los tecnicos
-    $sql_tec = "SELECT tecnicos, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas";
-    $datos_tec = $obj->mostrar($sql_tec);
 
     ////Extraemos a los datos de los sectores
     $sql_tipo = "SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas";
@@ -89,12 +103,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($datos_tec as $key){ ?>
-                            <tr>
-                                <td class="text-center"><b> <?php echo $key['tecnicos'];?> </b></td>
-                                <td class="text-center"><b> <?php echo $key['horas'];?> </b></td>
-                            </tr>
-                            <?php }?>
+                        <?php 
+                            ////Extraemos a los datos de los tecnicos
+                            for($i=0;$i<count($nombres_tec);$i++){
+
+                                $sql_tec = "SELECT tecnicos, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where tecnicos='$nombres_tec[$i]'";
+                                $datos_tec = $obj->mostrar($sql_tec);
+
+                                foreach($datos_tec as $key){ ?>
+                                    <tr>
+                                        <td class="text-center"><b> <?php echo $key['tecnicos'];?> </b></td>
+                                        <td class="text-center"><b> <?php echo $key['horas'];?> </b></td>
+                                    </tr>
+                        <?php
+                                }
+                            }
+                     ?>
                     </tbody>
                 </table>
             </div>
@@ -113,7 +137,7 @@
                         <?php foreach($datos_tipo as $key){ ?>
                             <tr>
                                 <td class="text-center"><b> <?php echo $key['t_tarea'];?> </b></td>
-                                <td class="text-center"><b> <?php echo $key['horas_h'];?> </b></td>
+                                <td class="text-center"><b> <?php echo $key['horas'];?> </b></td>
                             </tr>
                             <?php }?>
                     </tbody>
