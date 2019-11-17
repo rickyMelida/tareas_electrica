@@ -100,6 +100,7 @@
             </div>
 
             <div class="col-md-6 col-lg-6 col-sm-12 m-auto p-3">
+                
             <!-----------------Reporte por sector----------------------------->
                 <table class="table table-bordered table-primary">
                     <thead>
