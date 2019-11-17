@@ -22,26 +22,31 @@
     }
 
     //Seleccion de tareas
-    
+    $nombres_tipo_tarea = array();
 
+    $tipo = "SELECT tipo from t_tareas";
+    $res_tipo = mysqli_query($con, $tipo);
+    $r_t = mysqli_fetch_all($res_tipo, MYSQLI_ASSOC);
 
-    //echo "<script>alert('El nombre del tecnicos es ".$nombres_tec[0]."');</script>";
-    
-
-    ///Extraemos el total de las horas hombre
-    $sql = "SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas";
-    $datos = $obj->mostrar($sql);
+    foreach($r_t as $key) {
+        array_push($nombres_tipo_tarea, $key['tipo']);
+    }
 
     ////Extraemos a los datos de los sectores
     $sql_tipo = "SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas";
     $datos_tipo = $obj->mostrar($sql_tipo);
 
     ////Diferencia entre el objetivo y las horas hombre actual
-    foreach($datos as $key) { $hora1 = $key['horas'];}
+     ///Extraemos el total de las horas hombre
+    $hh = "SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas";
+    $datos_hh = $obj->mostrar($hh);
+
+    /*$hora1 = array();
+    foreach($datos_hh as $key) { array_push($hora1, $key['horas']) ;}*/
 
     $horaInicio = new DateTime($hora1);
     $horaTermino = new DateTime($objetivo);
-
+    
     $interval = $horaInicio->diff($horaTermino);
     //echo $interval->format('%H horas %i minutos %s seconds');
 
@@ -82,7 +87,7 @@
                     <tr>
                         <td class="text-center"><b> <?php setlocale(LC_TIME, "spanish"); echo ucfirst(strftime("%B"));?> </b></td>
                         <td class="text-center"><b> <?php setlocale(LC_TIME, "spanish"); echo ucfirst(strftime("%Y"));?> </b></td>
-                        <td class="text-center"><b> <?php foreach($datos as $key) { echo $key['horas'];} ?> </b></td>
+                        <td class="text-center"><b> <?php foreach($datos_hh as $key) { echo $key['horas'];} ?> </b></td>
                         <td class="text-center"><b> <?php echo $objetivo." Hs"; ?> </b></td>
                         <td class="text-center"><b> <?php echo $interval->format('%H:%i:%S '); ?> </b></td>
                     </tr>
@@ -134,12 +139,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($datos_tipo as $key){ ?>
-                            <tr>
+                    <?php 
+                        ////Extraemos a los datos de los tecnicos
+                        for($i=0;$i<count($nombres_tipo_tarea);$i++){
+
+                            $sql_tipo = "SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where t_tarea='$nombres_tipo_tarea[$i]'";
+                            $datos_tipo = $obj->mostrar($sql_tipo);
+
+                            foreach($datos_tipo as $key){ ?>
+                                <tr>
                                 <td class="text-center"><b> <?php echo $key['t_tarea'];?> </b></td>
                                 <td class="text-center"><b> <?php echo $key['horas'];?> </b></td>
-                            </tr>
-                            <?php }?>
+                                </tr>
+                            <?php
+                            }
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>

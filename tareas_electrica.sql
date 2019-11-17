@@ -44,8 +44,9 @@ alter table tecnicos add cargo_t varchar(50)
 update tecnicos set turno = "Manhana" where id_tecnico=5
 
 SELECT cargo_t from tecnicos where turno = 'Tarde' and nombre= 'Ricardo Melida'
-
+SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas
 select * from tecnicos
+
 
 create table tareas (
 	id_tarea int auto_increment,
@@ -65,6 +66,28 @@ create table tareas (
     primary key(id_tarea)
 );
 
+create table t_tareas(
+	id_tar int auto_increment, 
+    tipo varchar(200) not null,
+    
+    primary key(id_tar)
+)
+
+select * from t_tareas
+
+insert into t_tareas(tipo) 
+		 values("Rutinas"),
+			   ("Asistencia"),
+               ("Mantenimiento"),
+               ("Correctivo"),
+               ("Salon de Eventos"),
+               ("Marketing"),
+               ("Businesss Center"),
+               ("Gimnasio"),
+               ("TIC");
+               
+update t_tareas set 
+
 select * from tareas
 insert into tareas(t_tarea, estado, des_tarea, fecha, hora_i, hora_f, horas_h, turno, tecnicos, cargo)
 values("rutinas", "Finalizado", "Rutinas de trafos y generadores","1992-02-12", "13:00", "15:30", "2:00",  "tarde", "Ricardo Mélida", "Junior");
@@ -78,9 +101,11 @@ insert into usuarios(usuario, pass, tecns)
 			  ('turnoTarde', '1975', '2'),
 			  ('turnoNoche', 'LuisC', '3');
 
-SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) as horas FROM tareas where t_tarea = "asistencia"
+SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) as horas FROM tareas where t_tarea = "asistencia"
 
 SELECT tecnicos, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where tecnicos = "Ramon Coronel"
+
+
 
 SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas
 
