@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="form-check m-3">
-                    <input type="radio" class="form-check-input" name="t_trabajo" id="s_evento" value="s_evento" >
+                    <input type="radio" class="form-check-input" name="t_trabajo" id="s_evento" value="Salon_de_Eventos" >
                     <label class="form-check-label" for="s_evento">Salon de Eventos</label>
                 </div>
 
@@ -78,17 +78,17 @@
                 </div>
 
                 <div class="form-check m-3">
-                    <input type="radio" class="form-check-input" name="t_trabajo" id="b_center" value="b_center" >
-                    <label class="form-check-label" for="b_center">Businesss Center</label>
+                    <input type="radio" class="form-check-input" name="t_trabajo" id="b_center" value="Business_Center" >
+                    <label class="form-check-label" for="b_center">Business Center</label>
                 </div>
 
                 <div class="form-check m-3">
-                    <input type="radio" class="form-check-input" name="t_trabajo" id="gym" value="gym" >
+                    <input type="radio" class="form-check-input" name="t_trabajo" id="gym" value="Gimnasio" >
                     <label class="form-check-label" for="gym">Gimnasio</label>
                 </div>
 
                 <div class="form-check m-3">
-                    <input type="radio" class="form-check-input" name="t_trabajo" id="tic" value="tic" >
+                    <input type="radio" class="form-check-input" name="t_trabajo" id="tic" value="TIC" >
                     <label class="form-check-label" for="tic">TIC</label>
                 </div>
 

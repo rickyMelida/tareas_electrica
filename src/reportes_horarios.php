@@ -59,6 +59,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        function drawChart() {
+            // llame a la función ajax para obtener datos deportivos
+            var jsonData = $.ajax({
+                url: "../procesos/getData.php",
+                dataType: "json",
+                async: false
+            }).responseText;
+            
+            //El objeto DataTable se usa para mantener los datos pasados ​​en una visualización.
+            var data = new google.visualization.DataTable(jsonData);
+
+            // Para representar el gráfico circular.
+            var chart = new google.visualization.PieChart(document.getElementById('chart_container'));
+            chart.draw(data, {width: 800, height: 500});
+        }
+        // cargar la API de visualización
+        google.charts.load('current', {'packages':['corechart']});
+
+        // Configure una devolución de llamada para que se ejecute cuando se cargue la API de visualización de Google.
+        google.charts.setOnLoadCallback(drawChart);
+    </script>
     <title>Horarios</title>
     <link rel="shortcut icon" href="../iconos/electrico.ico" type="image/x-icon">
 </head>
@@ -159,10 +183,15 @@
                 </table>
             </div>
         </div>
+        <!------Grficos para el KPI----------->
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 m-auto p-3">
+                <div class="chart_container"></div>
+            </div>        
+        </div>
     </div>
 
     <script src="../js/design.js"></script>    
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>

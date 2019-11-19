@@ -86,7 +86,8 @@ insert into t_tareas(tipo)
                ("Gimnasio"),
                ("TIC");
                
-update t_tareas set 
+update t_tareas set tipo="Salon_de_Eventos" where id_tar = 5
+
 
 select * from tareas
 insert into tareas(t_tarea, estado, des_tarea, fecha, hora_i, hora_f, horas_h, turno, tecnicos, cargo)
