@@ -62,26 +62,36 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
+
+        google.load('visualization', '1.0', {'packages':['corechart']});
+
+        google.setOnLoadCallback(drawChart);
+
         function drawChart() {
-            // llame a la función ajax para obtener datos deportivos
-            var jsonData = $.ajax({
-                url: "../procesos/getData.php",
-                dataType: "json",
-                async: false
-            }).responseText;
             
-            //El objeto DataTable se usa para mantener los datos pasados ​​en una visualización.
-            var data = new google.visualization.DataTable(jsonData);
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Topping');
+            data.addColumn('number', 'Slices');
+            
+            data.addRows([
+            ['Asistencia', 155],
+            ['Bussines Center', 2],
+            ['Gimnasio', 18],
+            ['Mantenimiento', 315],
+            ['Marketing', 21],
+            ['Rutinas', 871],
+            ['Salon de Evento', 25],
+            ['TICs', 16],
 
-            // Para representar el gráfico circular.
-            var chart = new google.visualization.PieChart(document.getElementById('chart_container'));
-            chart.draw(data, {width: 800, height: 500});
+            ]);
+            
+            var options = {'title':'Total de horas por sector',
+                        'width':700,
+                        'height':300};
+
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
         }
-        // cargar la API de visualización
-        google.charts.load('current', {'packages':['corechart']});
-
-        // Configure una devolución de llamada para que se ejecute cuando se cargue la API de visualización de Google.
-        google.charts.setOnLoadCallback(drawChart);
     </script>
     <title>Horarios</title>
     <link rel="shortcut icon" href="../iconos/electrico.ico" type="image/x-icon">
@@ -186,7 +196,7 @@
         <!------Grficos para el KPI----------->
         <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12 m-auto p-3">
-                <div class="chart_container"></div>
+                <div id="chart_div" class="m-auto"></div>
             </div>        
         </div>
     </div>
