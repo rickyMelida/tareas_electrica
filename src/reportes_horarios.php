@@ -10,6 +10,7 @@
 
     //Seleccion de todos los tecnicos
     $nombres_tec = array();
+    $numero = 875;
 
     $c = new conectar();
     $con = $c->conexion();
@@ -61,38 +62,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-
-        google.load('visualization', '1.0', {'packages':['corechart']});
-
-        google.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Topping');
-            data.addColumn('number', 'Slices');
-            
-            data.addRows([
-            ['Asistencia', 155],
-            ['Bussines Center', 2],
-            ['Gimnasio', 18],
-            ['Mantenimiento', 315],
-            ['Marketing', 21],
-            ['Rutinas', 871],
-            ['Salon de Evento', 25],
-            ['TICs', 16],
-
-            ]);
-            
-            var options = {'title':'Total de horas por sector',
-                        'width':700,
-                        'height':300};
-
-            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-            chart.draw(data, options);
-        }
-    </script>
+    
     <title>Horarios</title>
     <link rel="shortcut icon" href="../iconos/electrico.ico" type="image/x-icon">
 </head>
@@ -177,10 +147,10 @@
                         ////Extraemos a los datos de los tecnicos
                         for($i=0;$i<count($nombres_tipo_tarea);$i++){
 
-                            $sql_tipo = "SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where t_tarea='$nombres_tipo_tarea[$i]'";
-                            $datos_tipo = $obj->mostrar($sql_tipo);
+                            $sql_tipo2 = "SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where t_tarea='$nombres_tipo_tarea[$i]'";
+                            $datos_tipo2 = $obj->mostrar($sql_tipo2);
 
-                            foreach($datos_tipo as $key){ ?>
+                            foreach($datos_tipo2 as $key){ ?>
                                 <tr>
                                 <td class="text-center"><b> <?php echo $key['t_tarea'];?> </b></td>
                                 <td class="text-center"><b> <?php echo $key['horas'];?> </b></td>
@@ -194,9 +164,50 @@
             </div>
         </div>
         <!------Grficos para el KPI----------->
+        <script type="text/javascript">
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+
+                var data = google.visualization.arrayToDataTable([
+                    ['Tecnico', 'Horas hombre'],
+                    
+                    <?php
+                            echo '["hola", 2]';
+                            echo count($nombres_tipo_tarea);
+
+                        ////Extraemos a los datos de los tecnicos
+                        for($i=0;$i<count($nombres_tipo_tarea);$i++){
+
+                            $sql_tipo = "SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where t_tarea='$nombres_tipo_tarea[$i]'";
+                            $datos_tipo = $obj->mostrar($sql_tipo);
+
+                            /*foreach($datos_tipo as $key){
+                                // ['<?php echo $key['t_tarea'];', ' echo $key['horas'];'],
+                                echo "['Tecnico', 'Horas hombre'],";
+
+
+                            }*/
+                        }
+                    ?>
+                    //["hola", 2],
+                    //['hola2', 5]
+                
+                ]);
+
+                var options = {
+                title: 'Horas hombre por sector'
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('grafica'));
+
+                chart.draw(data, options);
+            }
+        </script>
         <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12 m-auto p-3">
-                <div id="chart_div" class="m-auto"></div>
+                <div id="grafica" class="m-auto"></div>
             </div>        
         </div>
     </div>
@@ -206,3 +217,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
+
+<?php 
+                    
+                ?>
