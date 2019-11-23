@@ -40,6 +40,29 @@
 
             return $result = mysqli_query($con, $sql);
         }
+
+        public function tipo_horas($horario){
+            $res = array();
+
+            //Si nos da esta opcion la hora tiene dos digitos
+            if(substr($horario, 3, 1) ) {
+                $hora = substr($horario, 0, 2);
+                $min = substr($horario, 3, 2);
+                $seg = substr($horario, 6, 2);
+
+            }else {
+                
+                $hora = substr($horario, 0, 3);
+                $min = substr($horario, 4, 2);
+                $seg = substr($horario, 7, 2);
+            }
+            
+            for ($i=0; $i < 2; $i++) { 
+                array_push($res, $hora, $min, $seg);
+            }
+
+            return $res;
+        }
     }
 
 ?>

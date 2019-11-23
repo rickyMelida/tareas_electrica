@@ -33,6 +33,7 @@
         array_push($nombres_tipo_tarea, $key['tipo']);
     }
 
+    $n_t_t = $nombres_tipo_tarea;
     ////Extraemos a los datos de los sectores
     $sql_tipo = "SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas";
     $datos_tipo = $obj->mostrar($sql_tipo);
@@ -171,25 +172,20 @@
             function drawChart() {
 
                 var data = google.visualization.arrayToDataTable([
-                    ['Tecnico', 'Horas hombre'],
+                    ['Tipo de tarea', 'Horas'],
                     
                     <?php
-                            echo '["hola", 2]';
-                            echo count($nombres_tipo_tarea);
+                        // echo count($nombres_tipo_tarea);
+                        for ($i=0; $i < count($nombres_tipo_tarea); $i++) { 
+                            $sql_t = "SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where t_tarea='$nombres_tipo_tarea[$i]'";
+                            $datos_t = $obj->mostrar($sql_t);    
 
-                        ////Extraemos a los datos de los tecnicos
-                        for($i=0;$i<count($nombres_tipo_tarea);$i++){
-
-                            $sql_tipo = "SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where t_tarea='$nombres_tipo_tarea[$i]'";
-                            $datos_tipo = $obj->mostrar($sql_tipo);
-
-                            /*foreach($datos_tipo as $key){
-                                // ['<?php echo $key['t_tarea'];', ' echo $key['horas'];'],
-                                echo "['Tecnico', 'Horas hombre'],";
-
-
-                            }*/
+                            foreach($datos_t as $key) {
+                               // echo '["'.$key[$i].'", 20],';
+                                echo "['".$key['t_tarea']."', ".$key['horas']."],";
+                            }
                         }
+                        
                     ?>
                     //["hola", 2],
                     //['hola2', 5]
