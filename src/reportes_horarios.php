@@ -175,14 +175,19 @@
                     ['Tipo de tarea', 'Horas'],
                     
                     <?php
+                        $horas = array();
+                        $h = array();
                         // echo count($nombres_tipo_tarea);
                         for ($i=0; $i < count($nombres_tipo_tarea); $i++) { 
                             $sql_t = "SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where t_tarea='$nombres_tipo_tarea[$i]'";
                             $datos_t = $obj->mostrar($sql_t);    
 
                             foreach($datos_t as $key) {
-                               // echo '["'.$key[$i].'", 20],';
-                                echo "['".$key['t_tarea']."', ".$key['horas']."],";
+                                
+                                $h = $obj->tipo_horas(array_push($horas, $key['horas']));
+
+                                echo '["'.$key['t_tarea'].'", 20.3],';
+                                //echo "['".$key['t_tarea']."', ".$key['horas']."],";
                             }
                         }
                         

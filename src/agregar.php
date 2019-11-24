@@ -48,22 +48,22 @@
             <div class="col-lg-4 col-md-12">
                 <h2>Tipos de Trabajo</h2>
                 <div class="form-check m-3">
-                    <input type="radio" class="form-check-input" name="t_trabajo" id="rutinas" value="rutinas" checked>
+                    <input type="radio" class="form-check-input" name="t_trabajo" id="rutinas" value="Rutinas" checked>
                     <label class="form-check-label" for="rutinas">Rutinas</label>
                 </div>
 
                 <div class="form-check m-3">
-                    <input type="radio" class="form-check-input" name="t_trabajo" id="asistencia" value="asistencia" >
+                    <input type="radio" class="form-check-input" name="t_trabajo" id="asistencia" value="Asistencia" >
                     <label class="form-check-label" for="asistencia">Asistencia</label>
                 </div>
 
                 <div class="form-check m-3">
-                    <input type="radio" class="form-check-input" name="t_trabajo" id="mantenimiento" value="mantenimiento" >
+                    <input type="radio" class="form-check-input" name="t_trabajo" id="mantenimiento" value="Mantenimiento" >
                     <label class="form-check-label" for="mantenimiento">Mantenimiento</label>
                 </div>
 
                 <div class="form-check m-3">
-                    <input type="radio" class="form-check-input" name="t_trabajo" id="correctivo" value="correctivo" >
+                    <input type="radio" class="form-check-input" name="t_trabajo" id="correctivo" value="Correctivo" >
                     <label class="form-check-label" for="correctivo">Correctivo</label>
                 </div>
 
@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="form-check m-3">
-                    <input type="radio" class="form-check-input" name="t_trabajo" id="marketing" value="marketing" >
+                    <input type="radio" class="form-check-input" name="t_trabajo" id="marketing" value="Marketing" >
                     <label class="form-check-label" for="marketing">Marketing</label>
                 </div>
 
