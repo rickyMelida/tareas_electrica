@@ -177,6 +177,8 @@
                     <?php
                         $horas = array();
                         $h = array();
+                        
+                        $m = array();
                         // echo count($nombres_tipo_tarea);
                         for ($i=0; $i < count($nombres_tipo_tarea); $i++) { 
                             $sql_t = "SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where t_tarea='$nombres_tipo_tarea[$i]'";
@@ -184,11 +186,16 @@
 
                             foreach($datos_t as $key) {
                                 
-                                $h = $obj->tipo_horas(array_push($horas, $key['horas']));
+                                $horas = $obj->tipo_horas($key['horas']);
 
                                 echo '["'.$key['t_tarea'].'", 20.3],';
                                 //echo "['".$key['t_tarea']."', ".$key['horas']."],";
+                                
                             }
+
+                                array_push($h, $horas[0]);
+                                array_push($m, $horas[1]);
+                            
                         }
                         
                     ?>
@@ -205,11 +212,21 @@
 
                 chart.draw(data, options);
             }
+
+            <?php 
+                for($j=0;$j<count($h); $j++) { 
+                    if(strlen($h[$j]) > 2) {
+                        echo "console.log('El ".$j." tiene los dos puntos');";
+                        
+                    }
+                    echo "console.log('".$h[$j]."');";
+                }
+            ?>
         </script>
         <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12 m-auto p-3">
                 <div id="grafica" class="m-auto"></div>
-            </div>        
+            </div>  
         </div>
     </div>
 

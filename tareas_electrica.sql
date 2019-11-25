@@ -1,4 +1,4 @@
-create database tareas_electrica	
+create database 	
 use tareas_electrica
 
 create table tecnicos (
@@ -73,7 +73,7 @@ create table t_tareas(
     primary key(id_tar)
 )
 
-select * from t_tareas
+select * from tareas
 
 insert into t_tareas(tipo) 
 		 values("Rutinas"),
@@ -86,12 +86,11 @@ insert into t_tareas(tipo)
                ("Gimnasio"),
                ("TIC");
                
-update t_tareas set tipo="Salon_de_Eventos" where id_tar = 5
+update t_tareas set tipo="Business_Center" where id_tar = 7
 
- 
+select * from t_tareas
 
-select tipo from t_tareas
-
+select * from tareas
 insert into tareas(t_tarea, estado, des_tarea, fecha, hora_i, hora_f, horas_h, turno, tecnicos, cargo)
 values("rutinas", "Finalizado", "Rutinas de trafos y generadores","1992-02-12", "13:00", "15:30", "2:00",  "tarde", "Ricardo Mélida", "Junior");
 
@@ -127,9 +126,3 @@ select * from usuarios where usuario='turnoMañana' and pass='homero'
 
 
 delete from tecnicos where id_tecnico > 9
-
-use google_pie
-
-select * from productos
-
-select producto, unidades_vendidas from productos
