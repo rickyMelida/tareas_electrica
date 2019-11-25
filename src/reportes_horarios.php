@@ -177,7 +177,8 @@
                     <?php
                         $horas = array();
                         $h = array();
-                        
+                        $h_t = array();
+
                         $m = array();
                         // echo count($nombres_tipo_tarea);
                         for ($i=0; $i < count($nombres_tipo_tarea); $i++) { 
@@ -195,6 +196,15 @@
 
                                 array_push($h, $horas[0]);
                                 array_push($m, $horas[1]);
+
+                                if(strlen($h[$i]) == 2) {
+                                    //echo "console.log('El ".$j." tiene los dos puntos');";
+                                    array_push($h_t, $h[$i]);
+                                    
+                                }else {
+                                    array_push($h_t, substr($h[i], 0, 2));
+                                }
+
                             
                         }
                         
