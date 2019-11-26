@@ -180,6 +180,8 @@
                         $h_t = array();
 
                         $m = array();
+                        $m_t = array();
+
                         // echo count($nombres_tipo_tarea);
                         for ($i=0; $i < count($nombres_tipo_tarea); $i++) { 
                             $sql_t = "SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where t_tarea='$nombres_tipo_tarea[$i]'";
@@ -200,9 +202,12 @@
                                 if(strlen($h[$i]) == 2) {
                                     //echo "console.log('El ".$j." tiene los dos puntos');";
                                     array_push($h_t, $h[$i]);
+                                    array_push($m_t, $m[$i]);
                                     
                                 }else {
-                                    array_push($h_t, substr($h[i], 0, 2));
+                                    array_push($h_t, substr($h[$i], 0, 2));
+                                    //array_push($m_t, substr($m[$i], 0, 2));
+
                                 }
 
                             
@@ -224,12 +229,14 @@
             }
 
             <?php 
-                for($j=0;$j<count($h); $j++) { 
-                    if(strlen($h[$j]) > 2) {
+                for($j=0;$j<count($h_t); $j++) { 
+                   /* if(strlen($h[$j]) > 2) {
                         echo "console.log('El ".$j." tiene los dos puntos');";
                         
-                    }
-                    echo "console.log('".$h[$j]."');";
+                    }*/
+                    echo "console.log('".$h_t[$j]."');";
+                    echo "console.log('".$m_t[$j]."');";
+
                 }
             ?>
         </script>
