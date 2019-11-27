@@ -91,6 +91,8 @@ update t_tareas set tipo="Business_Center" where id_tar = 7
 select * from t_tareas
 
 select * from tareas
+
+truncate table tareas where estado= "Finalizado"
 insert into tareas(t_tarea, estado, des_tarea, fecha, hora_i, hora_f, horas_h, turno, tecnicos, cargo)
 values("rutinas", "Finalizado", "Rutinas de trafos y generadores","1992-02-12", "13:00", "15:30", "2:00",  "tarde", "Ricardo Mélida", "Junior");
 

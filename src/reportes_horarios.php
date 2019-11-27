@@ -231,8 +231,8 @@
             <?php 
                 for($j=0;$j<count($h_t); $j++) { 
                    
-                    echo "console.log('".$h_t[$j]."');";
-                    echo "console.log('".$m_t[$j]."');";
+                    echo "console.log('La horas es ".$h_t[$j]."');";
+                    echo "console.log('y los minutos ".$m_t[$j]."');";
 
                 }
             ?>
