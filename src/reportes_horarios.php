@@ -63,7 +63,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    
     <title>Horarios</title>
     <link rel="shortcut icon" href="../iconos/electrico.ico" type="image/x-icon">
 </head>
@@ -182,7 +181,12 @@
                         $m = array();
                         $m_t = array();
 
-                        // echo count($nombres_tipo_tarea);
+                        //Declaramos variable tipo array donde vamos a guardar los datos con los minutos en decimales
+                        $todos = array();
+
+                        //Agregamos una variable de array donde almacenaremos todos los nombres de los distintos tipos de trabajos
+                        $nombres = array();
+
                         for ($i=0; $i < count($nombres_tipo_tarea); $i++) { 
                             $sql_t = "SELECT t_tarea, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where t_tarea='$nombres_tipo_tarea[$i]'";
                             $datos_t = $obj->mostrar($sql_t);    
@@ -190,37 +194,44 @@
                             foreach($datos_t as $key) {
                                 
                                 $horas = $obj->tipo_horas($key['horas']);
+                                array_push($nombres, $key['t_tarea']);
 
-                                echo '["'.$key['t_tarea'].'", 20.3],';
-                                //echo "['".$key['t_tarea']."', ".$key['horas']."],";
+                                //echo '["'.$key['t_tarea'].'", 20.3],';
+
                                 
                             }
 
                                 array_push($h, $horas[0]);
                                 array_push($m, $horas[1]);
 
+                                //Aqui se van a guardar los datos de las horas y minutos por separado
                                 if(strlen($h[$i]) == 2) {
-                                    //echo "console.log('El ".$j." tiene los dos puntos');";
                                     array_push($h_t, $h[$i]);
                                     array_push($m_t, $m[$i]);
                                     
                                 }else {
                                     array_push($h_t, substr($h[$i], 0, 2));
-                                    //array_push($m_t, substr($m[$i], 0, 2));
 
-                                }
+                                }                            
+                        }
 
-                            
+                        for($j=0; $j < count($h_t); $j++) {
+                            //calculamos el porcentaje de los minutos
+                            $por = ($m_t[$j] * 100)/60;
+                            array_push($todos, $h_t[$j].".".$por);
                         }
                         
+                        for($k=0;$k < count($todos);$k++) {
+                            echo "['$nombres[$k]', ".(float)$todos[$k]."],";
+                            
+                        }
                     ?>
-                    //["hola", 2],
-                    //['hola2', 5]
                 
                 ]);
 
                 var options = {
-                title: 'Horas hombre por sector'
+                    title: 'Horas hombre por sector',
+                    height: 500
                 };
 
                 var chart = new google.visualization.PieChart(document.getElementById('grafica'));
@@ -228,18 +239,10 @@
                 chart.draw(data, options);
             }
 
-            <?php 
-                for($j=0;$j<count($h_t); $j++) { 
-                   
-                    echo "console.log('La horas es ".$h_t[$j]."');";
-                    echo "console.log('y los minutos ".$m_t[$j]."');";
-
-                }
-            ?>
         </script>
         <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12 m-auto p-3">
-                <div id="grafica" class="m-auto"></div>
+                <div id="grafica" class="m-auto w-100"></div>
             </div>  
         </div>
     </div>
@@ -249,7 +252,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
-
-<?php 
-                    
-                ?>
