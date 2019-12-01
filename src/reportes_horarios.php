@@ -231,7 +231,7 @@
 
                 var options = {
                     title: 'Horas hombre por sector',
-                    height: 500
+                    height: 500,
                 };
 
                 var chart = new google.visualization.PieChart(document.getElementById('grafica'));
@@ -241,7 +241,7 @@
 
         </script>
         <div class="row">
-            <div class="col-md-12 col-lg-12 col-sm-12 m-auto p-3">
+            <div class="col-md-12 m-auto p-3 ">
                 <div id="grafica" class="m-auto w-100"></div>
             </div>  
         </div>
