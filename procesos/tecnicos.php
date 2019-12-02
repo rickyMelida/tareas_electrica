@@ -9,8 +9,15 @@
         $obj = new conectar();
         $con = $obj->conexion();
 
-        mysqli_set_charset($con,'utf8');
-        $tecnicos = "SELECT * from tecnicos where turno = '$turno'";
+        if($turno == "admin"){
+            mysqli_set_charset($con,'utf8');
+            $tecnicos = "SELECT * from tecnicos";
+        }else {
+            mysqli_set_charset($con,'utf8');
+            $tecnicos = "SELECT * from tecnicos where turno = '$turno'";
+        }
+
+
         $tecnicosBD = $ver->mostrar($tecnicos);
 
         $tecs = array();

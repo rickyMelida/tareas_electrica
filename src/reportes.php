@@ -1,9 +1,11 @@
 <?php
-    require_once ("../validaciones/autorizacion.php");
+    require_once "../validaciones/autorizacion.php";
     require_once "../validaciones/conexionBD.php";
+
 
     $usuario = $_POST['usuario'];
     $pass = $_POST['password'];
+
 
     if(isset($_COOKIE['admin']) && isset($_COOKIE['admin_pass'])) {
         $usuario = $_COOKIE['admin'];
@@ -21,9 +23,10 @@
     $filas = mysqli_num_rows($resultado);
 
     
-
-    if($filas > 0) {
-        echo "<script>alert('Bienvenido Admin!!')</script>";
+    //Validamos si el usuario es el administrador
+    if($filas > 0 || $_SESSION['usuario'] == "admin") {
+        $_SESSION['usuario'] = $usuario;
+        //echo "<script>alert('Bienvenido Admin!!')</script>";
         setcookie('admin', $usuario, time() + 900);
         setcookie('admin_pass', $pass, time() + 900);
 

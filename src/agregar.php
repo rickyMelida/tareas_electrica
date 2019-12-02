@@ -15,6 +15,9 @@
         case 'turnoNoche' :
             $turno = "Noche";
             break;
+        case 'admin' :
+            $turno = "admin";
+            break;
         default:
             echo "<script>alert('Usuario No valido');
                 window.location = '../src/agregar.php';
@@ -139,14 +142,37 @@
                                 <input type="hidden" name="cargo[]" value="">
                                 <label class="form-check-label n_tecnicos" for="tecnico_1"><?php echo $tecnicos[0]; ?></label>
                             </div>
+
                             <div class="form-check my-4">
                                 <input type="checkbox" name="tecnico[]" id="tecnico_2" class="tecnicos" value="<?php echo $tecnicos[1];?>">
                                 <label class="form-check-label n_tecnicos" for="tecnico_2"> <?php echo $tecnicos[1];?> </label>
                             </div>
+                            
                             <div class="form-check my-4">
                                 <input type="checkbox" name="tecnico[]" id="tecnico_3" class="tecnicos" value="<?php echo $tecnicos[2];?>">
                                 <label class="form-check-label n_tecnicos" for="tecnico_3"><?php echo $tecnicos[2];?> </label>
+                            </div>
+                            
+                            <div class="form-check my-4">
+                                <input type="checkbox" name="tecnico[]" id="tecnico_3" class="tecnicos" value="<?php echo $tecnicos[3];?>">
+                                <label class="form-check-label n_tecnicos" for="tecnico_3"><?php echo $tecnicos[3];?> </label>
                             </div>                                     
+                            
+                            <div class="form-check my-4">
+                                <input type="checkbox" name="tecnico[]" id="tecnico_3" class="tecnicos" value="<?php echo $tecnicos[4];?>">
+                                <label class="form-check-label n_tecnicos" for="tecnico_3"><?php echo $tecnicos[4];?> </label>
+                            </div>
+                            
+                            <div class="form-check my-4">
+                                <input type="checkbox" name="tecnico[]" id="tecnico_3" class="tecnicos" value="<?php echo $tecnicos[5];?>">
+                                <label class="form-check-label n_tecnicos" for="tecnico_3"><?php echo $tecnicos[5];?> </label>
+                            </div>
+
+                            <div class="form-check my-4">
+                                <input type="checkbox" name="tecnico[]" id="tecnico_3" class="tecnicos" value="<?php echo $tecnicos[6];?>">
+                                <label class="form-check-label n_tecnicos" for="tecnico_3"><?php echo $tecnicos[6];?> </label>
+                            </div>
+
                     </div>
                 </div>
 
