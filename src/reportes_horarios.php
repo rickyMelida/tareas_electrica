@@ -4,7 +4,7 @@
     require_once "../validaciones/metodos_crud.php";
 
     //Objetivo de las horas hombre
-    $objetivo = "14:00:00";
+    $objetivo = "23:00:00";
 
     $var_session = $_COOKIE['admin'];
     $obj = new metodos();
@@ -167,9 +167,9 @@
         <!------Grficos para el KPI----------->
         <script type="text/javascript">
             google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
+            google.charts.setOnLoadCallback(grafica);
 
-            function drawChart() {
+            function grafica() {
 
                 var data = google.visualization.arrayToDataTable([
                     ['Tipo de tarea', 'Horas'],
@@ -227,7 +227,6 @@
                             
                         }
                     ?>
-                
                 ]);
 
                 var options = {
@@ -236,62 +235,44 @@
                 };
 
                 var chart = new google.visualization.PieChart(document.getElementById('grafica'));
-
                 chart.draw(data, options);
             }
-            /*------------------------------------------------------------------*/
+            /*-------------------------- GRAFICA EN BARRA POR TECNICO ----------------------------------------*/
 
 
+            google.charts.load("current", {packages: ["corechart"]});
+            google.charts.setOnLoadCallback(barra);
 
-            google.charts.load('current', {packages: ['corechart', 'bar']});
-            google.charts.setOnLoadCallback(drawBasic);
+            function barra() {
+            var data = google.visualization.arrayToDataTable([
+                ['Técnico', 'Horas Hombre', {role: 'style'}],
+                
+                ['Camilo Barreto', 8.94, '#b87333'],
+                ['Miler Sosa', 10.49, '#c82a54'],
+                ['Luis Cabrera ', 19.30, '#ef280f'],
+                ['Ramon Coronel', 21.45, '#e5e4e2'],
+                ['Santiago Mendez', 11.4, '#02ac66'],
+                ['Ricardo Melida', 18.45, 'color: #222222'],
+                ['Nicolas Acosta', 7.45, 'color: #109dfa'],
+            ]);
 
-            function drawBasic() {
-
-                var data = new google.visualization.DataTable();
-                data.addColumn('timeofday', 'Time of Day');
-                data.addColumn('number', 'Motivation Level');
-
-                data.addRows([
-                    [{v: [8, 0, 0], f: 'Camilo Barreto'}, 1],
-                    [{v: [9, 0, 0], f: 'Ricardo Melida'}, 2],
-                    [{v: [10, 0, 0], f:'10 am'}, 3],
-                    [{v: [11, 0, 0], f: '11 am'}, 4],
-                    [{v: [12, 0, 0], f: '12 pm'}, 5],
-                    [{v: [13, 0, 0], f: '1 pm'}, 6],
-                    [{v: [14, 0, 0], f: '2 pm'}, 7],
-                    [{v: [15, 0, 0], f: '3 pm'}, 8],
-                    [{v: [16, 0, 0], f: '4 pm'}, 9],
-                    [{v: [17, 0, 0], f: '5 pm'}, 10],
-
-                ]);
-
-                var options = {
-                    title: 'Total de horas por tecnico',
-                    hAxis: {
-                        title: 'Time of Day',
-                        format: 'h:mm a',
-                        viewWindow: {
-                            min: [7, 30, 0],
-                            max: [17, 30, 0]
-                        }
-                    },
-                    vAxis: {
-                        title: 'Horas Hombre'
-                    }
-                };
-
-                var chart = new google.visualization.ColumnChart(
-                document.getElementById('barra'));
-
-                chart.draw(data, options);
+            var options = {
+                title: "Horas Hombre por Técnico",
+                height: 500,
+                bar: {
+                    groupWidth: "70%"
+                },
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById("barra"));
+            chart.draw(data, options);
             }
+           
 
         </script>
         <!-- Grafica en torta por sector -->
         <div class="row">
             <div class="col-md-12 m-auto p-3 ">
-                <div id="grafica" class="m-auto w-100"></div>
+                <div id="grafica" class="m-auto w-90"></div>
             </div>  
         </div>
 
