@@ -197,9 +197,6 @@
                                 $horas = $obj->tipo_horas($key['horas']);
                                 array_push($nombres, $key['t_tarea']);
 
-                                //echo '["'.$key['t_tarea'].'", 20.3],';
-
-                                
                             }
 
                                 array_push($h, $horas[0]);
@@ -247,13 +244,69 @@
             var data = google.visualization.arrayToDataTable([
                 ['Técnico', 'Horas Hombre', {role: 'style'}],
                 
+                
+
+                <?php
+                       /* $horas = array();
+                        $h = array();
+                        $h_t = array();
+
+                        $m = array();
+                        $m_t = array();
+
+                        //Declaramos variable tipo array donde vamos a guardar los datos con los minutos en decimales
+                        $todos = array();
+
+                        //Agregamos una variable de array donde almacenaremos todos los nombres de los distintos tipos de trabajos
+                        $nombres = array();
+
+                        for ($i=0; $i < count($nombres_tipo_tarea); $i++) { 
+                            $sql_t = "SELECT tecnicos, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where tecnicos='$nombres_tec[$i]'";
+                            $datos_t = $obj->mostrar($sql_t);    
+
+                            foreach($datos_t as $key) {
+                                
+                                $horas = $obj->tipo_horas($key['horas']);
+                                array_push($nombres, $key['t_tarea']);
+
+                            }
+
+                                array_push($h, $horas[0]);
+                                array_push($m, $horas[1]);
+
+                                //Aqui se van a guardar los datos de las horas y minutos por separado
+                                if(strlen($h[$i]) == 2) {
+                                    array_push($h_t, $h[$i]);
+                                    array_push($m_t, $m[$i]);
+                                    
+                                }else {
+                                    array_push($h_t, substr($h[$i], 0, 2));
+
+                                }                            
+                        }
+
+                        for($j=0; $j < count($h_t); $j++) {
+                            //calculamos el porcentaje de los minutos
+                            $por = ($m_t[$j] * 100)/60;
+                            array_push($todos, $h_t[$j].".".$por);
+                        }
+                        
+                        for($k=0;$k < count($todos);$k++) {
+                            echo "['$nombres[$k]', ".(float)$todos[$k]."],";
+                            
+                        }*/
+                    ?>
+
+
+
+
                 ['Camilo Barreto', 8.94, '#b87333'],
                 ['Miler Sosa', 10.49, '#c82a54'],
                 ['Luis Cabrera ', 19.30, '#ef280f'],
                 ['Ramon Coronel', 21.45, '#e5e4e2'],
                 ['Santiago Mendez', 11.4, '#02ac66'],
-                ['Ricardo Melida', 18.45, 'color: #222222'],
-                ['Nicolas Acosta', 7.45, 'color: #109dfa'],
+                ['Ricardo Melida', 18.45, '#222222'],
+                ['Nicolas Acosta', 7.45, '#109dfa'],
             ]);
 
             var options = {
