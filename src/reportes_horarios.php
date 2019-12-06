@@ -247,52 +247,52 @@
                 
 
                 <?php
-                       /* $horas = array();
-                        $h = array();
+                       /* $horas_t = array();
                         $h_t = array();
+                        $h_t_t = array();
 
-                        $m = array();
                         $m_t = array();
+                        $m_t_t = array();
 
                         //Declaramos variable tipo array donde vamos a guardar los datos con los minutos en decimales
-                        $todos = array();
+                        $todos_t = array();
 
                         //Agregamos una variable de array donde almacenaremos todos los nombres de los distintos tipos de trabajos
-                        $nombres = array();
+                        $nombres_t = array();
 
-                        for ($i=0; $i < count($nombres_tipo_tarea); $i++) { 
-                            $sql_t = "SELECT tecnicos, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where tecnicos='$nombres_tec[$i]'";
-                            $datos_t = $obj->mostrar($sql_t);    
+                        for ($i=0; $i < count($nombres_tec); $i++) { 
+                            $sql_t_t = "SELECT tecnicos, SEC_TO_TIME(SUM(TIME_TO_SEC(horas_h))) AS horas FROM tareas where tecnicos='$nombres_tec[$i]'";
+                            $datos_t_t = $obj->mostrar($sql_t_t);    
 
-                            foreach($datos_t as $key) {
+                            foreach($datos_t_t as $key) {
                                 
-                                $horas = $obj->tipo_horas($key['horas']);
-                                array_push($nombres, $key['t_tarea']);
+                                $horas_t = $obj->tipo_horas($key['horas']);
+                                array_push($nombres_t, $key['t_tarea']);
 
                             }
 
-                                array_push($h, $horas[0]);
-                                array_push($m, $horas[1]);
+                                array_push($h_t, $horas_t[0]);
+                                array_push($m_t, $horas_t[1]);
 
                                 //Aqui se van a guardar los datos de las horas y minutos por separado
-                                if(strlen($h[$i]) == 2) {
-                                    array_push($h_t, $h[$i]);
-                                    array_push($m_t, $m[$i]);
+                                if(strlen($h_t[$i]) == 2) {
+                                    array_push($h_t_t, $h_t[$i]);
+                                    array_push($m_t_t, $m_t[$i]);
                                     
                                 }else {
-                                    array_push($h_t, substr($h[$i], 0, 2));
+                                    array_push($h_t_t, substr($h_t[$i], 0, 2));
 
                                 }                            
                         }
 
-                        for($j=0; $j < count($h_t); $j++) {
+                        for($j=0; $j < count($h_t_t); $j++) {
                             //calculamos el porcentaje de los minutos
-                            $por = ($m_t[$j] * 100)/60;
-                            array_push($todos, $h_t[$j].".".$por);
+                            $por_t = ($m_t[$j] * 100)/60;
+                            array_push($todos_t, $h_t_t[$j].".".$por_t);
                         }
                         
-                        for($k=0;$k < count($todos);$k++) {
-                            echo "['$nombres[$k]', ".(float)$todos[$k]."],";
+                        for($k=0;$k < count($todos_t);$k++) {
+                            echo "['$nombres_t[$k]', ".(float)$todos_t[$k]."],";
                             
                         }*/
                     ?>
