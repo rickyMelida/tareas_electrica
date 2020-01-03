@@ -6,7 +6,7 @@
     $con = $obj->conexion();
 
     if (!$con) {
-        header('Location: ../src/errorDB.php');
+        header('Location: ../includes/errorDB.php');
     }else {
 
         $usuario = $_POST['usuario'];
