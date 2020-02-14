@@ -1,0 +1,24 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    background: black;
+}
+
+form {
+    color: cornsilk;
+    background: steelblue;
+    border: 1px solid #000;
+    width: 70%;
+    height: 70vh;
+    margin: auto;
+}
+
+form .form-group {
+    width: 100%;
+    padding: 10%;
+}
