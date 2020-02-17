@@ -1,5 +1,7 @@
 <?php
-    require_once "conexionBD.php";
+    echo "sale";
+
+    /*require_once "conexionBD.php";
     session_start();
 
     $obj = new conectar();
@@ -21,7 +23,7 @@
 
         
 
-        if($filas > 0) {
+        /*if($filas > 0) {
             $_SESSION['usuario'] = $usuario;
             header('Location: ../src/principal.php');
 
@@ -31,6 +33,7 @@
             </script>";
         }
     }
+    */
 
 
 
