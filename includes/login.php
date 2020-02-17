@@ -1,6 +1,6 @@
 <body>
     <div class="container">
-        <form method="post" action="<?php echo VIEWS.'agregar.php';?>">
+        <form method="post" action="./app/validar_usuario.php">
             <h1>Eléctrica PLG</h1>
             <img src="./assets/iconos/electricista.png" alt="sale">
             <div class="form-group">

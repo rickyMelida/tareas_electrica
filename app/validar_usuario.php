@@ -1,12 +1,13 @@
 <?php
     echo "sale";
 
-    /*require_once "conexionBD.php";
+    require_once "conexionBD.php";
     session_start();
 
     $obj = new conectar();
     $con = $obj->conexion();
 
+    /*
     if (!$con) {
         header('Location: ../includes/errorDB.php');
     }else {
