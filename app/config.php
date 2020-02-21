@@ -16,5 +16,5 @@
     define('ICONOS', ASSETS.'iconos/');
     define('PLUGINS', ASSETS.'plugins/');
 
-
+    require_once './functions.php';
 ?>
